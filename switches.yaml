@@ -1,0 +1,33 @@
+platform: rpi_rf
+gpio: 17
+switches:
+  living_room_light:
+    # sw 1
+    code_on: 4150275
+    code_off: 4150275
+    pulselength: 164
+    protocol: 1
+  switch_2:
+    # sw 2
+    code_on: 4150284
+    code_off: 4150284
+    pulselength: 164
+    protocol: 1
+  switch_3:
+    # sw 3
+    code_on: 4150320
+    code_off: 4150320
+    pulselength: 164
+    protocol: 1
+  switch_4:
+    # sw 4
+    code_on: 4150464
+    code_off: 4150464
+    pulselength: 164
+    protocol: 1
+  switch_5:
+    # sw 5
+    code_on: 4151040
+    code_off: 4151040
+    pulselength: 164
+    protocol: 1
