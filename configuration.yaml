@@ -56,41 +56,6 @@ mqtt:
   username: pi
   password: raspberry
 
-switch:
-  platform: rpi_rf
-  gpio: 17
-  switches:
-    living_room_light:
-      # sw 1
-      code_on: 4150275
-      code_off: 4150275
-      pulselength: 164
-      protocol: 1
-    switch_2:
-      # sw 2
-      code_on: 4150284
-      code_off: 4150284
-      pulselength: 164
-      protocol: 1
-    switch_3:
-      # sw 3
-      code_on: 4150320
-      code_off: 4150320
-      pulselength: 164
-      protocol: 1
-    switch_4:
-      # sw 4
-      code_on: 4150464
-      code_off: 4150464
-      pulselength: 164
-      protocol: 1
-    switch_5:
-      # sw 5
-      code_on: 4151040
-      code_off: 4151040
-      pulselength: 164
-      protocol: 1
-
 emulated_hue:
   type: alexa
   expose_by_default: true
@@ -159,31 +124,7 @@ device_tracker:
 #      title: hello
 #
 
-notify:
-  - name: twilio_sms
-    platform: twilio_sms
-    account_sid: !secret notify_twilio_sms_account_sid
-    auth_token: !secret notify_twilio_sms_auth_tocken
-    from_number: !secret notify_twilio_sms_from_number
-
-automation:
-  - alias: Keith home
-    trigger:
-      platform: state
-      entity_id: device_tracker.androidea3abc784f46ce1e
-      #  Optional 
-      from: 'not_home'
-      to: 'home'
-      state: 'home'
-      for:
-        #hours: 1
-        #minutes: 10
-        seconds: 5
-    action:
-      service: notify.twilio_sms
-      data:
-        message: 'Keith is home'
-        target:
-          - !secret keith_sms
-          - !secret eve_sms
+notify: !include notify.yaml
+automation: !include_dir_list automation/
+switch: !include switches.yaml
 

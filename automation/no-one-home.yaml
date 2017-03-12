@@ -1,0 +1,38 @@
+alias: Lights on when arriving at empty home after dark
+trigger:
+  platform: state
+  entity_id: device_tracker.androidea3abc784f46ce1e, device_tracker.androidf34dc1ff9bd9fbb5
+  from: 'not_home'
+  to: 'home'
+  state: 'home'
+  for:
+    seconds: 5
+condition:
+  condition: and
+  conditions:
+    - condition: sun
+      after: sunset
+      after_offset: "-5:00:00"
+    - condition: sun
+      after: sunset
+      after_offset: "-5:00:00"
+    # - condition: state
+    #   entity_id: device_tracker.androidea3abc784f46ce1e
+    #   state: 'not_home'
+    #   for:
+    #     seconds: 15
+    # - condition: state
+    #   entity_id: device_tracker.androidf34dc1ff9bd9fbb5
+    #   state: 'not_home'
+    #   for:
+    #     seconds: 15
+action:
+  service: switch.turn_on
+  entity_id: switch.living_room_light
+
+# action:
+#   service: notify.twilio_sms
+#   data:
+#     message: 'You are home'
+#     target:
+#       - !secret keith_sms
