@@ -1,0 +1,13 @@
+# turn on Alfred after sunrise
+alias: Good morning, Alfred
+trigger:
+  platform: sun
+  event: sunrise
+  offset: '1:00:00'
+condition:
+  - condition: state
+    entity_id: switch.switch_5
+    state: 'off'
+action:
+  - service: switch.turn_on
+    entity_id: switch.switch_5

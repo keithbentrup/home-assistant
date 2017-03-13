@@ -1,0 +1,30 @@
+# after sunset trigger
+# if no one is home and the lights are off
+# wait a random time to turn on the lighs 
+# and then turn off after a random delay
+alias: Night lights
+trigger:
+  platform: sun
+  event: sunset
+condition:
+  condition: and
+  conditions:
+    - condition: state
+      entity_id: device_tracker.androidea3abc784f46ce1e
+      state: 'not_home'
+    - condition: state
+      entity_id: device_tracker.androidf34dc1ff9bd9fbb5
+      state: 'not_home'
+    - condition: state
+      entity_id: switch.living_room_light
+      state: 'off'
+action:
+  - delay: '0:{{ (range(10, 60)|random) }}'
+  - service: switch.turn_on
+    entity_id: switch.living_room_light
+  - delay: '{{ (range(2, 4)|random) }}:{{ (range(10, 60)|random) }}'
+  - condition: state
+    entity_id: switch.living_room_light
+    state: 'on'
+  - service: switch.turn_off
+    entity_id: switch.living_room_light

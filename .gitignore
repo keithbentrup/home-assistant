@@ -1,1 +1,8 @@
 secrets.yaml
+known_devices.yaml
+.uuid
+home-assistant.log
+home-assistant_v2.db
+deps/
+certs/
+

@@ -26,6 +26,8 @@ http:
   # Uncomment this if you are using SSL or running in Docker etc
   # base_url: example.duckdns.org:8123
   # port: 8123
+  ssl_certificate: /home/homeassistant/.homeassistant/csr-certbot.pem
+  ssl_key: /home/homeassistant/.homeassistant/key-certbot.pem
 
 # Checks for available updates
 updater:
@@ -70,6 +72,12 @@ device_tracker:
     password: !secret device_tracker_ddwrt_password
     consider_home: 60
     interval_seconds: 12
+
+camera:
+  - platform: rpi_camera
+    file_path: /home/homeassistant/.homeassistant/tmp.jpg
+    timelapse: 1000
+
 
 #sensor:
 #  - platform: wunderground
