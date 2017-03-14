@@ -1,10 +1,10 @@
 - name: twilio_sms
   platform: twilio_sms
-  account_sid: !secret notify_twilio_sms_account_sid
-  auth_token: !secret notify_twilio_sms_auth_tocken
   from_number: !secret notify_twilio_sms_from_number
+
 - name: syslog
   platform: syslog
+
 - name: gmail
   platform: smtp
   server: smtp.gmail.com
@@ -14,3 +14,4 @@
   username: entsolutionsteam@gmail.com
   password: !secret gmail_password
   recipient: keithbentrup@gmail.com
+

@@ -25,9 +25,9 @@ http:
   api_password: !secret http_api_password
   # Uncomment this if you are using SSL or running in Docker etc
   # base_url: example.duckdns.org:8123
-  # port: 8123
-  ssl_certificate: /home/homeassistant/.homeassistant/csr-certbot.pem
-  ssl_key: /home/homeassistant/.homeassistant/key-certbot.pem
+  server_port: 8124
+  ssl_certificate: /home/homeassistant/.homeassistant/certs/fullchain1.pem
+  ssl_key: /home/homeassistant/.homeassistant/certs/privkey1.pem
 
 # Checks for available updates
 updater:
@@ -131,6 +131,10 @@ camera:
 #    config:
 #      title: hello
 #
+
+twilio:
+  account_sid: !secret notify_twilio_sms_account_sid
+  auth_token: !secret notify_twilio_sms_auth_tocken
 
 notify: !include notify.yaml
 automation: !include_dir_list automation/
