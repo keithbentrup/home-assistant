@@ -32,8 +32,16 @@ http:
 # Checks for available updates
 updater:
 
+recorder:
+  purge_days: 3
+
 # Discover some devices automatically
-discovery:
+#discovery:
+#  ignore:
+#    - google_cast
+#    - denonavr
+#    - philips_hue
+
 
 # Allows you to issue voice commands from the frontend in enabled browsers
 conversation:
@@ -135,6 +143,18 @@ camera:
 twilio:
   account_sid: !secret notify_twilio_sms_account_sid
   auth_token: !secret notify_twilio_sms_auth_tocken
+
+#media_player:
+#  - platform: cast
+#  - platform: webostv
+#    host: 192.168.4.4
+#    mac: C8:08:E9:53:EC:81
+#    name: living room tv
+#    filename: webostv.conf
+#    customize:
+#      sources:
+#        - livetv
+#        - youtube
 
 notify: !include notify.yaml
 automation: !include_dir_list automation/

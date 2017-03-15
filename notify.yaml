@@ -15,3 +15,8 @@
   password: !secret gmail_password
   recipient: keithbentrup@gmail.com
 
+#- platform: webostv
+#  host: 192.168.4.4
+#  name: livingroom_tv
+#  filename: webostv.conf
+
