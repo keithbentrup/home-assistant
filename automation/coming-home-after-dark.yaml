@@ -8,14 +8,9 @@ trigger:
   for:
     seconds: 5
 condition:
-  condition: and
-  conditions:
-    - condition: sun
-      after: sunset
-      after_offset: "-0:10"
-    - condition: state
-      entity_id: switch.living_room_light
-      state: 'off'
+  condition: sun
+  after: sunset
+  after_offset: "-0:10"
 action:
   service: switch.turn_on
   entity_id: switch.living_room_light
