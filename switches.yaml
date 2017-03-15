@@ -1,59 +1,57 @@
 platform: rpi_rf
 gpio: 17
 switches:
-  etekcity_1:
+  # switch_1:
+  living_room_light:
     code_on: 1381683
     code_off: 1381692
     protocol: 1
     pulselength: 183
-  etekcity_2:
+  # switch_2:
+  bedroom_light:
     code_on: 1381827
     code_off: 1381836
     protocol: 1
     pulselength: 183
-  etekcity_3:
+  # switch_3:
+  alfred_outlet:
     code_on: 1382147
     code_off: 1382156
     protocol: 1
     pulselength: 183
-  etekcity_4:
-    code_on: 1383683
-    code_off: 1383692
-    protocol: 1
-    pulselength: 183
-  etekcity_5:
-    code_on: 1389827
-    code_off: 1389836
-    protocol: 1
-    pulselength: 183
+#  switch_4:
+#    code_on: 1383683
+#    code_off: 1383692
+#    protocol: 1
+#    pulselength: 183
+#  switch_5:
+#    code_on: 1389827
+#    code_off: 1389836
+#    protocol: 1
+#    pulselength: 183
 
-  living_room_light:
-    # sw 1
-    code_on: 4150275
-    code_off: 4150275
-    pulselength: 164
-    protocol: 1
-  switch_2:
-    # sw 2
-    code_on: 4150284
-    code_off: 4150284
-    pulselength: 164
-    protocol: 1
-  switch_3:
-    # sw 3
-    code_on: 4150320
-    code_off: 4150320
-    pulselength: 164
-    protocol: 1
-  switch_4:
-    # sw 4
-    code_on: 4150464
-    code_off: 4150464
-    pulselength: 164
-    protocol: 1
-  switch_5:
-    # sw 5
-    code_on: 4151040
-    code_off: 4151040
-    pulselength: 164
-    protocol: 1
+#  toggle_1:
+#    code_on: 4150275
+#    code_off: 4150275
+#    pulselength: 164
+#    protocol: 1
+#  toggle_2:
+#    code_on: 4150284
+#    code_off: 4150284
+#    pulselength: 164
+#    protocol: 1
+#  toggle_3:
+#    code_on: 4150320
+#    code_off: 4150320
+#    pulselength: 164
+#    protocol: 1
+#  toggle_4:
+#    code_on: 4150464
+#    code_off: 4150464
+#    pulselength: 164
+#    protocol: 1
+#  toggle_5:
+#    code_on: 4151040
+#    code_off: 4151040
+#    pulselength: 164
+#    protocol: 1
