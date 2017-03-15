@@ -20,3 +20,8 @@
 #  name: livingroom_tv
 #  filename: webostv.conf
 
+- name: html5push
+  platform: html5
+  gcm_api_key: !secret gcm_api_key
+  gcm_sender_id: !secret gcm_sender_id
+
