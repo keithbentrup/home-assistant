@@ -1,0 +1,10 @@
+name: gmail
+platform: smtp
+server: smtp.gmail.com
+port: 587
+sender: entsolutionsteam@gmail.com
+starttls: true
+username: entsolutionsteam@gmail.com
+password: !secret gmail_password
+recipient: keithbentrup@gmail.com
+

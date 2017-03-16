@@ -156,7 +156,7 @@ twilio:
 #        - livetv
 #        - youtube
 
-notify: !include notify.yaml
+notify: !include_dir_list notifiers/
 automation: !include_dir_list automation/
-switch: !include switches.yaml
+switch: !include_dir_list switches/
 

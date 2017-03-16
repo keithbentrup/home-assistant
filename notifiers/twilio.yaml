@@ -1,0 +1,4 @@
+name: twilio_sms
+platform: twilio_sms
+from_number: !secret notify_twilio_sms_from_number
+

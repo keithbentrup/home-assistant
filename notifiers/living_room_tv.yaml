@@ -1,0 +1,5 @@
+name: living_room_tv
+platform: webostv
+host: 192.168.4.4
+filename: webostv.conf
+
