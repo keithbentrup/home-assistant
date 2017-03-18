@@ -1,0 +1,10 @@
+alias: HTML5 push notification action button clicked
+trigger:
+  platform: event
+  event_type: html5_notification.clicked
+  event_data:
+    action: open_door
+action:
+  - service: switch.turn_on
+    entity_id: switch.living_room_light
+

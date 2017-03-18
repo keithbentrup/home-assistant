@@ -1,0 +1,22 @@
+alias: Coming home
+trigger:
+  platform: state
+  entity_id: device_tracker.androidea3abc784f46ce1e, device_tracker.androidf34dc1ff9bd9fbb5
+  state: 'home'
+  from: 'not_home'
+  to: 'home'
+  for:
+    seconds: 5
+action:
+  service: notify.html5_push
+  data_template:
+    target: "{{ trigger.entity_id }}"
+    message: >
+      {%- for state in states.device_tracker if state.entity_id == trigger.entity_id -%}
+       Welcome home, {{ state.attributes.friendly_name }}.
+      {%- endfor -%} 
+    data:
+      actions:
+        - action: "open_door"
+          title: "Open door?"
+          icon: "https://cdn0.iconfinder.com/data/icons/office-set-2/512/21-128.png"

@@ -76,15 +76,16 @@ emulated_hue:
 device_tracker:
   - platform: ddwrt
     host: 192.168.4.1
-    username: admin
+    username: root
     password: !secret device_tracker_ddwrt_password
     consider_home: 60
     interval_seconds: 12
-
-camera:
-  - platform: rpi_camera
-    file_path: /home/homeassistant/.homeassistant/tmp.jpg
-    timelapse: 1000
+  - platform: ddwrt
+    host: 192.168.4.2
+    username: root
+    password: !secret device_tracker_ddwrt_password
+    consider_home: 60
+    interval_seconds: 12
 
 
 #sensor:
