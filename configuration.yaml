@@ -10,6 +10,7 @@ homeassistant:
   unit_system: imperial
   # Pick yours from here: http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
   time_zone: America/New_York
+  customize: !include customize.yaml
 
 # Show links to resources in log and frontend
 # introduction:
@@ -80,12 +81,12 @@ device_tracker:
     password: !secret device_tracker_ddwrt_password
     consider_home: 60
     interval_seconds: 12
-  - platform: ddwrt
-    host: 192.168.4.2
-    username: root
-    password: !secret device_tracker_ddwrt_password
-    consider_home: 60
-    interval_seconds: 12
+#  - platform: ddwrt
+#    host: 192.168.4.2
+#    username: root
+#    password: !secret device_tracker_ddwrt_password
+#    consider_home: 60
+#    interval_seconds: 12
 
 
 #sensor:
@@ -131,19 +132,19 @@ device_tracker:
 #      - wind_kph
 #      - wind_mph
 #      - wind_string
-#
-#panel_custom:
-#  - name: react
-#    sidebar_title: TodoMVC
-#    sidebar_icon: mdi:work
-#    url_path: todomvc
-#    config:
-#      title: hello
-#
+
 
 twilio:
   account_sid: !secret notify_twilio_sms_account_sid
   auth_token: !secret notify_twilio_sms_auth_tocken
+
+notify: !include_dir_list notifiers/
+automation: !include_dir_list automation/
+switch: !include_dir_list switches/
+group: !include_dir_merge_named groups/
+
+zwave:
+    usb_path: /dev/ttyACM0
 
 #media_player:
 #  - platform: cast
@@ -157,7 +158,8 @@ twilio:
 #        - livetv
 #        - youtube
 
-notify: !include_dir_list notifiers/
-automation: !include_dir_list automation/
-switch: !include_dir_list switches/
+#android_ip_webcam:
+#  - host: 192.168.4.7
+#    name: Moto G 2nd Gen
+
 

@@ -1,0 +1,8 @@
+sensor.aeotec_dsb09104_home_energy_meter_previous_reading_2_1_3:
+  friendly_name: Prev Reading
+sensor.aeotec_dsb09104_home_energy_meter_energy_2_0_3:
+  friendly_name: Cur Energy Meter
+sensor.aeotec_dsb09104_home_energy_meter_interval_2_2_3:
+  friendly_name: Energy Meter Interval
+sensor.aeotec_dsb09104_home_energy_meter_power_2_8_3:
+  friendly_name: Power

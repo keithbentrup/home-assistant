@@ -1,0 +1,5 @@
+home:
+  view: no
+  entities:
+    - device_tracker.androidf34dc1ff9bd9fbb5
+    - device_tracker.androidea3abc784f46ce1e

@@ -1,0 +1,8 @@
+switches:
+  view: no
+  entities:
+    - switch.bedroom_light
+    - switch.living_room_light
+    - switch.alfred_outlet
+    - switch.office_light
+    - switch.test

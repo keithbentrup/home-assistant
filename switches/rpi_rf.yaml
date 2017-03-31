@@ -19,11 +19,11 @@ switches:
     code_off: 1382156
     protocol: 1
     pulselength: 183
-#  switch_4:
-#    code_on: 1383683
-#    code_off: 1383692
-#    protocol: 1
-#    pulselength: 183
+  office_light:
+   code_on: 1383683
+   code_off: 1383692
+   protocol: 1
+   pulselength: 183
 #  switch_5:
 #    code_on: 1389827
 #    code_off: 1389836

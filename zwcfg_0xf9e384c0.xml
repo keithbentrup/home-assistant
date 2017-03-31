@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Driver xmlns="http://code.google.com/p/open-zwave/" version="3" home_id="0xf9e384c0" node_id="1" api_capabilities="0" controller_capabilities="40" poll_interval="60000" poll_interval_between="true">
+	<Node id="1" name="" location="" basic="2" generic="2" specific="1" type="Static PC Controller" listening="true" frequentListening="false" beaming="true" routing="false" max_baud_rate="40000" version="4" query_stage="Complete">
+		<Manufacturer id="86" name="Aeotec">
+			<Product type="101" id="5a" name="ZW090 Z-Stick Gen5" />
+		</Manufacturer>
+		<CommandClasses>
+			<CommandClass id="32" name="COMMAND_CLASS_BASIC" version="1" after_mark="true">
+				<Instance index="1" />
+				<Value type="byte" genre="basic" instance="1" index="0" label="Basic" units="" read_only="false" write_only="false" verify_changes="false" poll_intensity="0" min="0" max="255" value="0" />
+			</CommandClass>
+		</CommandClasses>
+	</Node>
+	<Node id="2" name="" location="" basic="4" generic="33" specific="1" type="Routing Multilevel Sensor" listening="false" frequentListening="true" beaming="true" routing="true" max_baud_rate="40000" version="3" query_stage="CacheLoad">
+		<Manufacturer id="86" name="Aeotec">
+			<Product type="2" id="9" name="DSB09104 Home Energy Meter" />
+		</Manufacturer>
+		<CommandClasses>
+			<CommandClass id="32" name="COMMAND_CLASS_BASIC" version="1" request_flags="5" after_mark="true" mapping="49">
+				<Instance index="1" />
+				<Instance index="2" endpoint="1" />
+				<Instance index="3" endpoint="2" />
+			</CommandClass>
+			<CommandClass id="49" name="COMMAND_CLASS_SENSOR_MULTILEVEL" version="2" request_flags="1" innif="true">
+				<Instance index="1" />
+				<Instance index="2" endpoint="1" />
+				<Instance index="3" endpoint="2" />
+				<Value type="decimal" genre="user" instance="1" index="4" label="Power" units="W" read_only="true" write_only="false" verify_changes="false" poll_intensity="0" min="0" max="0" value="0.000" />
+				<Value type="decimal" genre="user" instance="2" index="4" label="Power" units="W" read_only="true" write_only="false" verify_changes="false" poll_intensity="0" min="0" max="0" value="0.000" />
+				<Value type="decimal" genre="user" instance="3" index="4" label="Power" units="W" read_only="true" write_only="false" verify_changes="false" poll_intensity="0" min="0" max="0" value="0.000" />
+			</CommandClass>
+			<CommandClass id="50" name="COMMAND_CLASS_METER" version="2" request_flags="3" innif="true">
+				<Instance index="1" />
+				<Instance index="2" endpoint="1" />
+				<Instance index="3" endpoint="2" />
+				<Value type="decimal" genre="user" instance="1" index="0" label="Energy" units="kWh" read_only="true" write_only="false" verify_changes="false" poll_intensity="0" min="0" max="0" value="0.000" />
+				<Value type="decimal" genre="user" instance="1" index="1" label="Previous Reading" units="kWh" read_only="true" write_only="false" verify_changes="false" poll_intensity="0" min="0" max="0" value="0.000" />
+				<Value type="int" genre="user" instance="1" index="2" label="Interval" units="seconds" read_only="true" write_only="false" verify_changes="false" poll_intensity="0" min="-2147483648" max="2147483647" value="554" />
+				<Value type="decimal" genre="user" instance="1" index="8" label="Power" units="W" read_only="true" write_only="false" verify_changes="false" poll_intensity="0" min="0" max="0" value="0.000" />
+				<Value type="bool" genre="user" instance="1" index="32" label="Exporting" units="" read_only="true" write_only="false" verify_changes="false" poll_intensity="0" min="0" max="0" value="False" />
+				<Value type="button" genre="system" instance="1" index="33" label="Reset" units="" read_only="false" write_only="true" verify_changes="false" poll_intensity="0" min="0" max="0" />
+				<Value type="decimal" genre="user" instance="2" index="0" label="Energy" units="kWh" read_only="true" write_only="false" verify_changes="false" poll_intensity="0" min="0" max="0" value="0.000" />
+				<Value type="decimal" genre="user" instance="2" index="1" label="Previous Reading" units="kWh" read_only="true" write_only="false" verify_changes="false" poll_intensity="0" min="0" max="0" value="0.000" />
+				<Value type="int" genre="user" instance="2" index="2" label="Interval" units="seconds" read_only="true" write_only="false" verify_changes="false" poll_intensity="0" min="-2147483648" max="2147483647" value="555" />
+				<Value type="decimal" genre="user" instance="2" index="8" label="Power" units="W" read_only="true" write_only="false" verify_changes="false" poll_intensity="0" min="0" max="0" value="0.000" />
+				<Value type="bool" genre="user" instance="2" index="32" label="Exporting" units="" read_only="true" write_only="false" verify_changes="false" poll_intensity="0" min="0" max="0" value="False" />
+				<Value type="button" genre="system" instance="2" index="33" label="Reset" units="" read_only="false" write_only="true" verify_changes="false" poll_intensity="0" min="0" max="0" />
+				<Value type="decimal" genre="user" instance="3" index="0" label="Energy" units="kWh" read_only="true" write_only="false" verify_changes="false" poll_intensity="0" min="0" max="0" value="0.000" />
+				<Value type="decimal" genre="user" instance="3" index="1" label="Previous Reading" units="kWh" read_only="true" write_only="false" verify_changes="false" poll_intensity="0" min="0" max="0" value="0.000" />
+				<Value type="int" genre="user" instance="3" index="2" label="Interval" units="seconds" read_only="true" write_only="false" verify_changes="false" poll_intensity="0" min="-2147483648" max="2147483647" value="554" />
+				<Value type="decimal" genre="user" instance="3" index="8" label="Power" units="W" read_only="true" write_only="false" verify_changes="false" poll_intensity="0" min="0" max="0" value="0.000" />
+				<Value type="bool" genre="user" instance="3" index="32" label="Exporting" units="" read_only="true" write_only="false" verify_changes="false" poll_intensity="0" min="0" max="0" value="False" />
+				<Value type="button" genre="system" instance="3" index="33" label="Reset" units="" read_only="false" write_only="true" verify_changes="false" poll_intensity="0" min="0" max="0" />
+			</CommandClass>
+			<CommandClass id="96" name="COMMAND_CLASS_MULTI_INSTANCE/CHANNEL" version="2" request_flags="1" innif="true">
+				<Instance index="1" />
+			</CommandClass>
+			<CommandClass id="112" name="COMMAND_CLASS_CONFIGURATION" version="1" request_flags="5" innif="true">
+				<Instance index="1" />
+				<Value type="short" genre="config" instance="1" index="1" label="Country Voltage" units="volts" read_only="false" write_only="false" verify_changes="false" poll_intensity="0" min="0" max="240" value="120">
+					<Help>Voltage to calculate wattage from amperage. US=120. EU,ANZ=240.</Help>
+				</Value>
+				<Value type="byte" genre="config" instance="1" index="3" label="Power changed" units="" read_only="false" write_only="false" verify_changes="false" poll_intensity="0" min="0" max="1" value="0">
+					<Help>Automatic report only when power is changed.</Help>
+				</Value>
+				<Value type="short" genre="config" instance="1" index="4" label="Wattage Threshold" units="watts" read_only="false" write_only="false" verify_changes="false" poll_intensity="0" min="-32768" max="32767" value="50">
+					<Help>Threshold change in wattage to induce a automatic report (whole HEM).</Help>
+				</Value>
+				<Value type="short" genre="config" instance="1" index="5" label="Wattage Threshold C1" units="watts" read_only="false" write_only="false" verify_changes="false" poll_intensity="0" min="-32768" max="32767" value="50">
+					<Help>Threshold change in wattage to induce a automatic report (Clamp 1).</Help>
+				</Value>
+				<Value type="short" genre="config" instance="1" index="6" label="Wattage Threshold C2" units="watts" read_only="false" write_only="false" verify_changes="false" poll_intensity="0" min="-32768" max="32767" value="50">
+					<Help>Threshold change in wattage to induce a automatic report (Clamp 2).</Help>
+				</Value>
+				<Value type="short" genre="config" instance="1" index="7" label="Wattage Threshold C3" units="watts" read_only="false" write_only="false" verify_changes="false" poll_intensity="0" min="-32768" max="32767" value="50">
+					<Help>Threshold change in wattage to induce a automatic report (Clamp 3).</Help>
+				</Value>
+				<Value type="byte" genre="config" instance="1" index="8" label="Wattage Percentage Change" units="%" read_only="false" write_only="false" verify_changes="false" poll_intensity="0" min="0" max="255" value="10">
+					<Help>Percentage change in wattage to induce a automatic report (whole HEM).</Help>
+				</Value>
+				<Value type="byte" genre="config" instance="1" index="9" label="Wattage Percentage Change C1" units="%" read_only="false" write_only="false" verify_changes="false" poll_intensity="0" min="0" max="255" value="10">
+					<Help>Percentage change in wattage to induce a automatic report (Clamp 1).</Help>
+				</Value>
+				<Value type="byte" genre="config" instance="1" index="10" label="Wattage Percentage Change C2" units="%" read_only="false" write_only="false" verify_changes="false" poll_intensity="0" min="0" max="255" value="10">
+					<Help>Percentage change in wattage to induce a automatic report (Clamp 2).</Help>
+				</Value>
+				<Value type="byte" genre="config" instance="1" index="11" label="Wattage Percentage Change C3" units="%" read_only="false" write_only="false" verify_changes="false" poll_intensity="0" min="0" max="255" value="10">
+					<Help>Percentage change in wattage to induce a automatic report (Clamp 3).</Help>
+				</Value>
+				<Value type="byte" genre="config" instance="1" index="12" label="Accumulate energy" units="" read_only="false" write_only="false" verify_changes="false" poll_intensity="0" min="0" max="1" value="0">
+					<Help>Accumulate energy when Battery Powered.</Help>
+				</Value>
+				<Value type="byte" genre="config" instance="1" index="20" label="USB powered" units="" read_only="true" write_only="false" verify_changes="false" poll_intensity="0" min="0" max="1" value="0">
+					<Help>This byte denotes whether the product is using batteries (value = 0) or using USB power (value = 1).</Help>
+				</Value>
+				<Value type="int" genre="config" instance="1" index="100" label="Reset #101-103" units="" read_only="false" write_only="true" verify_changes="false" poll_intensity="0" min="-2147483648" max="2147483647" affects="101,102,103" value="0">
+					<Help>Reset to default parameters number 101-103. Any value other then 0 will initiate this reset.</Help>
+				</Value>
+				<Value type="int" genre="config" instance="1" index="101" label="Group 1 Reports" units="" read_only="false" write_only="false" verify_changes="false" poll_intensity="0" min="-2147483648" max="2147483647" value="0">
+					<Help>Which reports need to send in group1. Format is as follows: Byte 1 (msb): Reserved Byte 2: Reserved Byte 3: Bit 7: reserved Bit 6: reserved Bit 5: Auto Send Meter Report (for kWh) at the group time interval (Clamp 3) Bit 4: Auto Send Meter Report (for kWh) at the group time interval (Clamp 2) Bit 3: Auto Send Meter Report (for kWh) at the group time interval (Clamp 1) Bit 2: Auto Send Meter Report (for watts) at the group time interval (Clamp 3) Bit 1: Auto Send Meter Report (for watts) at the group time interval (Clamp 2) Bit 0: Auto Send Meter Report (for watts) at the group time interval (Clamp 1) Byte 4 (lsb): Bit 7: reserved Bit 6: reserved Bit 5: reserved Bit 4: reserved Bit 3: Auto Send Meter Report (for kWh) at the group time interval (whole HEM) Bit 2: Auto Send Meter Report (for watts) at the group time interval (whole HEM) Bit 1: Auto Send Multilevel Sensor Report (for watts) at the group time interval (whole HEM) Bit 0: Auto Send Battery Report at the group time interval (whole HEM)</Help>
+				</Value>
+				<Value type="int" genre="config" instance="1" index="102" label="Group 2 Reports" units="" read_only="false" write_only="false" verify_changes="false" poll_intensity="0" min="-2147483648" max="2147483647" value="0">
+					<Help>Which reports need to send in group2. Format is as follows: Byte 1 (msb): Reserved Byte 2: Reserved Byte 3: Bit 7: reserved Bit 6: reserved Bit 5: Auto Send Meter Report (for kWh) at the group time interval (Clamp 3) Bit 4: Auto Send Meter Report (for kWh) at the group time interval (Clamp 2) Bit 3: Auto Send Meter Report (for kWh) at the group time interval (Clamp 1) Bit 2: Auto Send Meter Report (for watts) at the group time interval (Clamp 3) Bit 1: Auto Send Meter Report (for watts) at the group time interval (Clamp 2) Bit 0: Auto Send Meter Report (for watts) at the group time interval (Clamp 1) Byte 4 (lsb): Bit 7: reserved Bit 6: reserved Bit 5: reserved Bit 4: reserved Bit 3: Auto Send Meter Report (for kWh) at the group time interval (whole HEM) Bit 2: Auto Send Meter Report (for watts) at the group time interval (whole HEM) Bit 1: Auto Send Multilevel Sensor Report (for watts) at the group time interval (whole HEM) Bit 0: Auto Send Battery Report at the group time interval (whole HEM)</Help>
+				</Value>
+				<Value type="int" genre="config" instance="1" index="103" label="Group 3 Reports" units="" read_only="false" write_only="false" verify_changes="false" poll_intensity="0" min="-2147483648" max="2147483647" value="0">
+					<Help>Which reports need to send in group3. Format is as follows: Byte 1 (msb): Reserved Byte 2: Reserved Byte 3: Bit 7: reserved Bit 6: reserved Bit 5: Auto Send Meter Report (for kWh) at the group time interval (Clamp 3) Bit 4: Auto Send Meter Report (for kWh) at the group time interval (Clamp 2) Bit 3: Auto Send Meter Report (for kWh) at the group time interval (Clamp 1) Bit 2: Auto Send Meter Report (for watts) at the group time interval (Clamp 3) Bit 1: Auto Send Meter Report (for watts) at the group time interval (Clamp 2) Bit 0: Auto Send Meter Report (for watts) at the group time interval (Clamp 1) Byte 4 (lsb): Bit 7: reserved Bit 6: reserved Bit 5: reserved Bit 4: reserved Bit 3: Auto Send Meter Report (for kWh) at the group time interval (whole HEM) Bit 2: Auto Send Meter Report (for watts) at the group time interval (whole HEM) Bit 1: Auto Send Multilevel Sensor Report (for watts) at the group time interval (whole HEM) Bit 0: Auto Send Battery Report at the group time interval (whole HEM)</Help>
+				</Value>
+				<Value type="int" genre="config" instance="1" index="110" label="Reset #111-113" units="" read_only="false" write_only="true" verify_changes="false" poll_intensity="0" min="-2147483648" max="2147483647" affects="111,112,113" value="0">
+					<Help>Reset to default parameters number 111-113. Any value other then 0 will initiate this reset.</Help>
+				</Value>
+				<Value type="int" genre="config" instance="1" index="111" label="Group 1 Interval" units="seconds" read_only="false" write_only="false" verify_changes="false" poll_intensity="0" min="-2147483648" max="2147483647" value="720">
+					<Help>The interval of sending report group 1.</Help>
+				</Value>
+				<Value type="int" genre="config" instance="1" index="112" label="Group 2 Interval" units="seconds" read_only="false" write_only="false" verify_changes="false" poll_intensity="0" min="-2147483648" max="2147483647" value="720">
+					<Help>The interval of sending report group 2.</Help>
+				</Value>
+				<Value type="int" genre="config" instance="1" index="113" label="Group 3 Interval" units="seconds" read_only="false" write_only="false" verify_changes="false" poll_intensity="0" min="-2147483648" max="2147483647" value="720">
+					<Help>The interval of sending report group 3.</Help>
+				</Value>
+				<Value type="int" genre="config" instance="1" index="253" label="Unit Recalibration (dangerous)" units="" read_only="false" write_only="true" verify_changes="false" poll_intensity="0" min="-2147483648" max="2147483647" value="0">
+					<Help>Re-calibrate (will destroy factory calibration). CONTACT AEON LABS before using.</Help>
+				</Value>
+				<Value type="short" genre="config" instance="1" index="254" label="Device Tag" units="" read_only="false" write_only="false" verify_changes="false" poll_intensity="0" min="-32768" max="32767" value="0">
+					<Help>Device tag.</Help>
+				</Value>
+				<Value type="int" genre="config" instance="1" index="255" label="Reset default configuration" units="" read_only="false" write_only="true" verify_changes="false" poll_intensity="0" min="-2147483648" max="2147483647" affects="all" value="0">
+					<Help>Reset to the default configuration.</Help>
+				</Value>
+			</CommandClass>
+			<CommandClass id="114" name="COMMAND_CLASS_MANUFACTURER_SPECIFIC" version="1" request_flags="5" innif="true">
+				<Instance index="1" />
+			</CommandClass>
+			<CommandClass id="128" name="COMMAND_CLASS_BATTERY" version="1" request_flags="5" innif="true">
+				<Instance index="1" />
+				<Value type="byte" genre="user" instance="1" index="0" label="Battery Level" units="%" read_only="true" write_only="false" verify_changes="false" poll_intensity="0" min="0" max="255" value="0" />
+			</CommandClass>
+			<CommandClass id="132" name="COMMAND_CLASS_WAKE_UP" version="1" request_flags="2" create_vars="false">
+				<Instance index="1" />
+			</CommandClass>
+			<CommandClass id="133" name="COMMAND_CLASS_ASSOCIATION" version="1" request_flags="5" innif="true">
+				<Instance index="1" />
+				<Associations num_groups="1">
+					<Group index="1" max_associations="5" label="Lifeline" auto="true">
+						<Node id="1" />
+					</Group>
+				</Associations>
+			</CommandClass>
+			<CommandClass id="134" name="COMMAND_CLASS_VERSION" version="1" request_flags="5" innif="true">
+				<Instance index="1" />
+				<Value type="string" genre="system" instance="1" index="0" label="Library Version" units="" read_only="true" write_only="false" verify_changes="false" poll_intensity="0" min="0" max="0" value="3" />
+				<Value type="string" genre="system" instance="1" index="1" label="Protocol Version" units="" read_only="true" write_only="false" verify_changes="false" poll_intensity="0" min="0" max="0" value="2.78" />
+				<Value type="string" genre="system" instance="1" index="2" label="Application Version" units="" read_only="true" write_only="false" verify_changes="false" poll_intensity="0" min="0" max="0" value="3.60" />
+			</CommandClass>
+		</CommandClasses>
+	</Node>
+</Driver>
