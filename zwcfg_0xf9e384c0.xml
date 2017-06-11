@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<Driver xmlns="http://code.google.com/p/open-zwave/" version="3" home_id="0xf9e384c0" node_id="1" api_capabilities="0" controller_capabilities="40" poll_interval="60000" poll_interval_between="true">
+<Driver xmlns="http://code.google.com/p/open-zwave/" version="3" home_id="0xf9e384c0" node_id="1" api_capabilities="8" controller_capabilities="28" poll_interval="30000" poll_interval_between="true">
 	<Node id="1" name="" location="" basic="2" generic="2" specific="1" type="Static PC Controller" listening="true" frequentListening="false" beaming="true" routing="false" max_baud_rate="40000" version="4" query_stage="Complete">
 		<Manufacturer id="86" name="Aeotec">
-			<Product type="101" id="5a" name="ZW090 Z-Stick Gen5" />
+			<Product type="101" id="5a" name="ZW090 Z-Stick Gen5 US" />
 		</Manufacturer>
 		<CommandClasses>
 			<CommandClass id="32" name="COMMAND_CLASS_BASIC" version="1" after_mark="true">
@@ -11,7 +11,417 @@
 			</CommandClass>
 		</CommandClasses>
 	</Node>
-	<Node id="2" name="" location="" basic="4" generic="33" specific="1" type="Routing Multilevel Sensor" listening="false" frequentListening="true" beaming="true" routing="true" max_baud_rate="40000" version="3" query_stage="CacheLoad">
+	<Node id="9" name="" location="" basic="4" generic="64" specific="3" type="Secure Keypad Door Lock" listening="true" frequentListening="true" beaming="true" routing="true" max_baud_rate="40000" version="4" secured="true" query_stage="Complete">
+		<Manufacturer id="90" name="Kwikset">
+			<Product type="1" id="1" name="Touchpad Electronic Deadbolt" />
+		</Manufacturer>
+		<CommandClasses>
+			<CommandClass id="32" name="COMMAND_CLASS_BASIC" version="1" request_flags="4" issecured="true" mapping="98">
+				<Instance index="1" />
+			</CommandClass>
+			<CommandClass id="76" name="COMMAND_CLASS_DOOR_LOCK_LOGGING" version="1" request_flags="4" issecured="true" m_MaxRecords="10">
+				<Instance index="1" />
+				<Value type="byte" genre="system" instance="1" index="0" label="Max Number of Records" units="" read_only="true" write_only="false" verify_changes="false" poll_intensity="0" min="0" max="255" value="10" />
+				<Value type="byte" genre="user" instance="1" index="1" label="Current Record Number" units="" read_only="false" write_only="false" verify_changes="false" poll_intensity="0" min="0" max="255" value="4" />
+				<Value type="string" genre="user" instance="1" index="2" label="Log Record" units="" read_only="true" write_only="false" verify_changes="false" poll_intensity="0" min="0" max="0" value="Invalid Record" />
+			</CommandClass>
+			<CommandClass id="98" name="COMMAND_CLASS_DOOR_LOCK" version="1" request_flags="4" issecured="true" m_timeoutsupported="1" m_insidehandlemode="0" m_outsidehandlemode="0" m_timeoutmins="254" m_timeoutsecs="254">
+				<Instance index="1" />
+				<Value type="bool" genre="user" instance="1" index="0" label="Locked" units="" read_only="false" write_only="false" verify_changes="false" poll_intensity="0" min="0" max="0" value="True" />
+				<Value type="list" genre="user" instance="1" index="1" label="Locked (Advanced)" units="" read_only="false" write_only="false" verify_changes="false" poll_intensity="0" min="0" max="0" vindex="0" size="1">
+					<Item label="Unsecure" value="0" />
+					<Item label="Unsecured with Timeout" value="1" />
+					<Item label="Inside Handle Unsecured" value="2" />
+					<Item label="Inside Handle Unsecured with Timeout" value="3" />
+					<Item label="Outside Handle Unsecured" value="4" />
+					<Item label="Outside Handle Unsecured with Timeout" value="5" />
+					<Item label="Secured" value="255" />
+					<Item label="Invalid" value="255" />
+				</Value>
+				<Value type="list" genre="system" instance="1" index="2" label="Timeout Mode" units="" read_only="false" write_only="false" verify_changes="false" poll_intensity="0" min="0" max="0" vindex="0" size="1">
+					<Item label="No Timeout" value="1" />
+					<Item label="Secure Lock after Timeout" value="2" />
+				</Value>
+				<Value type="byte" genre="system" instance="1" index="5" label="Outside Handle Control" units="" read_only="false" write_only="false" verify_changes="false" poll_intensity="0" min="0" max="255" value="0" />
+				<Value type="byte" genre="system" instance="1" index="6" label="Inside Handle Control" units="" read_only="false" write_only="false" verify_changes="false" poll_intensity="0" min="0" max="255" value="0" />
+			</CommandClass>
+			<CommandClass id="99" name="COMMAND_CLASS_USER_CODE" version="1" request_flags="6" issecured="true" codes="0">
+				<Instance index="1" />
+				<Value type="button" genre="system" instance="1" index="254" label="Refresh All UserCodes" units="" read_only="false" write_only="true" verify_changes="false" poll_intensity="0" min="0" max="0" />
+				<Value type="byte" genre="system" instance="1" index="255" label="Code Count" units="" read_only="true" write_only="false" verify_changes="false" poll_intensity="0" min="0" max="255" value="0" />
+			</CommandClass>
+			<CommandClass id="112" name="COMMAND_CLASS_CONFIGURATION" version="1" request_flags="4" issecured="true">
+				<Instance index="1" />
+				<Value type="list" genre="config" instance="1" index="1" label="1 User Code Type" units="" read_only="false" write_only="false" verify_changes="false" poll_intensity="0" min="0" max="255" vindex="0" size="1">
+					<Help>set the User Code Type for their corresponding user codes.</Help>
+					<Item label="Owner" value="1" />
+					<Item label="Guest (Required for Year Day Schedules)" value="3" />
+					<Item label="Worker (Required for Week Day Schedules)" value="4" />
+					<Item label="No corresponding user code" value="255" />
+				</Value>
+				<Value type="list" genre="config" instance="1" index="2" label="2 User Code Type" units="" read_only="false" write_only="false" verify_changes="false" poll_intensity="0" min="0" max="255" vindex="0" size="1">
+					<Help>set the User Code Type for their corresponding user codes.</Help>
+					<Item label="Owner" value="1" />
+					<Item label="Guest (Required for Year Day Schedules)" value="3" />
+					<Item label="Worker (Required for Week Day Schedules)" value="4" />
+					<Item label="No corresponding user code" value="255" />
+				</Value>
+				<Value type="list" genre="config" instance="1" index="3" label="3 User Code Type" units="" read_only="false" write_only="false" verify_changes="false" poll_intensity="0" min="0" max="255" vindex="0" size="1">
+					<Help>set the User Code Type for their corresponding user codes.</Help>
+					<Item label="Owner" value="1" />
+					<Item label="Guest (Required for Year Day Schedules)" value="3" />
+					<Item label="Worker (Required for Week Day Schedules)" value="4" />
+					<Item label="No corresponding user code" value="255" />
+				</Value>
+				<Value type="list" genre="config" instance="1" index="4" label="4 User Code Type" units="" read_only="false" write_only="false" verify_changes="false" poll_intensity="0" min="0" max="255" vindex="0" size="1">
+					<Help>set the User Code Type for their corresponding user codes.</Help>
+					<Item label="Owner" value="1" />
+					<Item label="Guest (Required for Year Day Schedules)" value="3" />
+					<Item label="Worker (Required for Week Day Schedules)" value="4" />
+					<Item label="No corresponding user code" value="255" />
+				</Value>
+				<Value type="list" genre="config" instance="1" index="5" label="5 User Code Type" units="" read_only="false" write_only="false" verify_changes="false" poll_intensity="0" min="0" max="255" vindex="0" size="1">
+					<Help>set the User Code Type for their corresponding user codes.</Help>
+					<Item label="Owner" value="1" />
+					<Item label="Guest (Required for Year Day Schedules)" value="3" />
+					<Item label="Worker (Required for Week Day Schedules)" value="4" />
+					<Item label="No corresponding user code" value="255" />
+				</Value>
+				<Value type="list" genre="config" instance="1" index="6" label="6 User Code Type" units="" read_only="false" write_only="false" verify_changes="false" poll_intensity="0" min="0" max="255" vindex="0" size="1">
+					<Help>set the User Code Type for their corresponding user codes.</Help>
+					<Item label="Owner" value="1" />
+					<Item label="Guest (Required for Year Day Schedules)" value="3" />
+					<Item label="Worker (Required for Week Day Schedules)" value="4" />
+					<Item label="No corresponding user code" value="255" />
+				</Value>
+				<Value type="list" genre="config" instance="1" index="7" label="7 User Code Type" units="" read_only="false" write_only="false" verify_changes="false" poll_intensity="0" min="0" max="255" vindex="0" size="1">
+					<Help>set the User Code Type for their corresponding user codes.</Help>
+					<Item label="Owner" value="1" />
+					<Item label="Guest (Required for Year Day Schedules)" value="3" />
+					<Item label="Worker (Required for Week Day Schedules)" value="4" />
+					<Item label="No corresponding user code" value="255" />
+				</Value>
+				<Value type="list" genre="config" instance="1" index="8" label="8 User Code Type" units="" read_only="false" write_only="false" verify_changes="false" poll_intensity="0" min="0" max="255" vindex="0" size="1">
+					<Help>set the User Code Type for their corresponding user codes.</Help>
+					<Item label="Owner" value="1" />
+					<Item label="Guest (Required for Year Day Schedules)" value="3" />
+					<Item label="Worker (Required for Week Day Schedules)" value="4" />
+					<Item label="No corresponding user code" value="255" />
+				</Value>
+				<Value type="list" genre="config" instance="1" index="9" label="9 User Code Type" units="" read_only="false" write_only="false" verify_changes="false" poll_intensity="0" min="0" max="255" vindex="0" size="1">
+					<Help>set the User Code Type for their corresponding user codes.</Help>
+					<Item label="Owner" value="1" />
+					<Item label="Guest (Required for Year Day Schedules)" value="3" />
+					<Item label="Worker (Required for Week Day Schedules)" value="4" />
+					<Item label="No corresponding user code" value="255" />
+				</Value>
+				<Value type="list" genre="config" instance="1" index="10" label="10 User Code Type" units="" read_only="false" write_only="false" verify_changes="false" poll_intensity="0" min="0" max="255" vindex="0" size="1">
+					<Help>set the User Code Type for their corresponding user codes.</Help>
+					<Item label="Owner" value="1" />
+					<Item label="Guest (Required for Year Day Schedules)" value="3" />
+					<Item label="Worker (Required for Week Day Schedules)" value="4" />
+					<Item label="No corresponding user code" value="255" />
+				</Value>
+				<Value type="list" genre="config" instance="1" index="11" label="11 User Code Type" units="" read_only="false" write_only="false" verify_changes="false" poll_intensity="0" min="0" max="255" vindex="0" size="1">
+					<Help>set the User Code Type for their corresponding user codes.</Help>
+					<Item label="Owner" value="1" />
+					<Item label="Guest (Required for Year Day Schedules)" value="3" />
+					<Item label="Worker (Required for Week Day Schedules)" value="4" />
+					<Item label="No corresponding user code" value="255" />
+				</Value>
+				<Value type="list" genre="config" instance="1" index="12" label="12 User Code Type" units="" read_only="false" write_only="false" verify_changes="false" poll_intensity="0" min="0" max="255" vindex="0" size="1">
+					<Help>set the User Code Type for their corresponding user codes.</Help>
+					<Item label="Owner" value="1" />
+					<Item label="Guest (Required for Year Day Schedules)" value="3" />
+					<Item label="Worker (Required for Week Day Schedules)" value="4" />
+					<Item label="No corresponding user code" value="255" />
+				</Value>
+				<Value type="list" genre="config" instance="1" index="13" label="13 User Code Type" units="" read_only="false" write_only="false" verify_changes="false" poll_intensity="0" min="0" max="255" vindex="0" size="1">
+					<Help>set the User Code Type for their corresponding user codes.</Help>
+					<Item label="Owner" value="1" />
+					<Item label="Guest (Required for Year Day Schedules)" value="3" />
+					<Item label="Worker (Required for Week Day Schedules)" value="4" />
+					<Item label="No corresponding user code" value="255" />
+				</Value>
+				<Value type="list" genre="config" instance="1" index="14" label="14 User Code Type" units="" read_only="false" write_only="false" verify_changes="false" poll_intensity="0" min="0" max="255" vindex="0" size="1">
+					<Help>set the User Code Type for their corresponding user codes.</Help>
+					<Item label="Owner" value="1" />
+					<Item label="Guest (Required for Year Day Schedules)" value="3" />
+					<Item label="Worker (Required for Week Day Schedules)" value="4" />
+					<Item label="No corresponding user code" value="255" />
+				</Value>
+				<Value type="list" genre="config" instance="1" index="15" label="15 User Code Type" units="" read_only="false" write_only="false" verify_changes="false" poll_intensity="0" min="0" max="255" vindex="0" size="1">
+					<Help>set the User Code Type for their corresponding user codes.</Help>
+					<Item label="Owner" value="1" />
+					<Item label="Guest (Required for Year Day Schedules)" value="3" />
+					<Item label="Worker (Required for Week Day Schedules)" value="4" />
+					<Item label="No corresponding user code" value="255" />
+				</Value>
+				<Value type="list" genre="config" instance="1" index="16" label="16 User Code Type" units="" read_only="false" write_only="false" verify_changes="false" poll_intensity="0" min="0" max="255" vindex="0" size="1">
+					<Help>set the User Code Type for their corresponding user codes.</Help>
+					<Item label="Owner" value="1" />
+					<Item label="Guest (Required for Year Day Schedules)" value="3" />
+					<Item label="Worker (Required for Week Day Schedules)" value="4" />
+					<Item label="No corresponding user code" value="255" />
+				</Value>
+				<Value type="list" genre="config" instance="1" index="17" label="17 User Code Type" units="" read_only="false" write_only="false" verify_changes="false" poll_intensity="0" min="0" max="255" vindex="0" size="1">
+					<Help>set the User Code Type for their corresponding user codes.</Help>
+					<Item label="Owner" value="1" />
+					<Item label="Guest (Required for Year Day Schedules)" value="3" />
+					<Item label="Worker (Required for Week Day Schedules)" value="4" />
+					<Item label="No corresponding user code" value="255" />
+				</Value>
+				<Value type="list" genre="config" instance="1" index="18" label="18 User Code Type" units="" read_only="false" write_only="false" verify_changes="false" poll_intensity="0" min="0" max="255" vindex="0" size="1">
+					<Help>set the User Code Type for their corresponding user codes.</Help>
+					<Item label="Owner" value="1" />
+					<Item label="Guest (Required for Year Day Schedules)" value="3" />
+					<Item label="Worker (Required for Week Day Schedules)" value="4" />
+					<Item label="No corresponding user code" value="255" />
+				</Value>
+				<Value type="list" genre="config" instance="1" index="19" label="19 User Code Type" units="" read_only="false" write_only="false" verify_changes="false" poll_intensity="0" min="0" max="255" vindex="0" size="1">
+					<Help>set the User Code Type for their corresponding user codes.</Help>
+					<Item label="Owner" value="1" />
+					<Item label="Guest (Required for Year Day Schedules)" value="3" />
+					<Item label="Worker (Required for Week Day Schedules)" value="4" />
+					<Item label="No corresponding user code" value="255" />
+				</Value>
+				<Value type="list" genre="config" instance="1" index="20" label="20 User Code Type" units="" read_only="false" write_only="false" verify_changes="false" poll_intensity="0" min="0" max="255" vindex="0" size="1">
+					<Help>set the User Code Type for their corresponding user codes.</Help>
+					<Item label="Owner" value="1" />
+					<Item label="Guest (Required for Year Day Schedules)" value="3" />
+					<Item label="Worker (Required for Week Day Schedules)" value="4" />
+					<Item label="No corresponding user code" value="255" />
+				</Value>
+				<Value type="list" genre="config" instance="1" index="21" label="21 User Code Type" units="" read_only="false" write_only="false" verify_changes="false" poll_intensity="0" min="0" max="255" vindex="0" size="1">
+					<Help>set the User Code Type for their corresponding user codes.</Help>
+					<Item label="Owner" value="1" />
+					<Item label="Guest (Required for Year Day Schedules)" value="3" />
+					<Item label="Worker (Required for Week Day Schedules)" value="4" />
+					<Item label="No corresponding user code" value="255" />
+				</Value>
+				<Value type="list" genre="config" instance="1" index="22" label="22 User Code Type" units="" read_only="false" write_only="false" verify_changes="false" poll_intensity="0" min="0" max="255" vindex="0" size="1">
+					<Help>set the User Code Type for their corresponding user codes.</Help>
+					<Item label="Owner" value="1" />
+					<Item label="Guest (Required for Year Day Schedules)" value="3" />
+					<Item label="Worker (Required for Week Day Schedules)" value="4" />
+					<Item label="No corresponding user code" value="255" />
+				</Value>
+				<Value type="list" genre="config" instance="1" index="23" label="23 User Code Type" units="" read_only="false" write_only="false" verify_changes="false" poll_intensity="0" min="0" max="255" vindex="0" size="1">
+					<Help>set the User Code Type for their corresponding user codes.</Help>
+					<Item label="Owner" value="1" />
+					<Item label="Guest (Required for Year Day Schedules)" value="3" />
+					<Item label="Worker (Required for Week Day Schedules)" value="4" />
+					<Item label="No corresponding user code" value="255" />
+				</Value>
+				<Value type="list" genre="config" instance="1" index="24" label="24 User Code Type" units="" read_only="false" write_only="false" verify_changes="false" poll_intensity="0" min="0" max="255" vindex="0" size="1">
+					<Help>set the User Code Type for their corresponding user codes.</Help>
+					<Item label="Owner" value="1" />
+					<Item label="Guest (Required for Year Day Schedules)" value="3" />
+					<Item label="Worker (Required for Week Day Schedules)" value="4" />
+					<Item label="No corresponding user code" value="255" />
+				</Value>
+				<Value type="list" genre="config" instance="1" index="25" label="25 User Code Type" units="" read_only="false" write_only="false" verify_changes="false" poll_intensity="0" min="0" max="255" vindex="0" size="1">
+					<Help>set the User Code Type for their corresponding user codes.</Help>
+					<Item label="Owner" value="1" />
+					<Item label="Guest (Required for Year Day Schedules)" value="3" />
+					<Item label="Worker (Required for Week Day Schedules)" value="4" />
+					<Item label="No corresponding user code" value="255" />
+				</Value>
+				<Value type="list" genre="config" instance="1" index="26" label="26 User Code Type" units="" read_only="false" write_only="false" verify_changes="false" poll_intensity="0" min="0" max="255" vindex="0" size="1">
+					<Help>set the User Code Type for their corresponding user codes.</Help>
+					<Item label="Owner" value="1" />
+					<Item label="Guest (Required for Year Day Schedules)" value="3" />
+					<Item label="Worker (Required for Week Day Schedules)" value="4" />
+					<Item label="No corresponding user code" value="255" />
+				</Value>
+				<Value type="list" genre="config" instance="1" index="27" label="27 User Code Type" units="" read_only="false" write_only="false" verify_changes="false" poll_intensity="0" min="0" max="255" vindex="0" size="1">
+					<Help>set the User Code Type for their corresponding user codes.</Help>
+					<Item label="Owner" value="1" />
+					<Item label="Guest (Required for Year Day Schedules)" value="3" />
+					<Item label="Worker (Required for Week Day Schedules)" value="4" />
+					<Item label="No corresponding user code" value="255" />
+				</Value>
+				<Value type="list" genre="config" instance="1" index="28" label="28 User Code Type" units="" read_only="false" write_only="false" verify_changes="false" poll_intensity="0" min="0" max="255" vindex="0" size="1">
+					<Help>set the User Code Type for their corresponding user codes.</Help>
+					<Item label="Owner" value="1" />
+					<Item label="Guest (Required for Year Day Schedules)" value="3" />
+					<Item label="Worker (Required for Week Day Schedules)" value="4" />
+					<Item label="No corresponding user code" value="255" />
+				</Value>
+				<Value type="list" genre="config" instance="1" index="29" label="29 User Code Type" units="" read_only="false" write_only="false" verify_changes="false" poll_intensity="0" min="0" max="255" vindex="0" size="1">
+					<Help>set the User Code Type for their corresponding user codes.</Help>
+					<Item label="Owner" value="1" />
+					<Item label="Guest (Required for Year Day Schedules)" value="3" />
+					<Item label="Worker (Required for Week Day Schedules)" value="4" />
+					<Item label="No corresponding user code" value="255" />
+				</Value>
+				<Value type="list" genre="config" instance="1" index="30" label="30 User Code Type" units="" read_only="false" write_only="false" verify_changes="false" poll_intensity="0" min="0" max="255" vindex="0" size="1">
+					<Help>set the User Code Type for their corresponding user codes.</Help>
+					<Item label="Owner" value="1" />
+					<Item label="Guest (Required for Year Day Schedules)" value="3" />
+					<Item label="Worker (Required for Week Day Schedules)" value="4" />
+					<Item label="No corresponding user code" value="255" />
+				</Value>
+				<Value type="byte" genre="config" instance="1" index="31" label="Dipswitches state" units="" read_only="true" write_only="false" verify_changes="false" poll_intensity="0" min="0" max="255" value="101">
+					<Help>Bit mask field that returns the state of the user accessible Dipswitches on the door look. Bit 0 Lock LED Status (1: enable) Bit 1 Auto lock (1: enable) Bit 2 Auto Buzzer (1: enable) Bit 3 Secure Screen (1: enable) *Only for MB 916</Help>
+				</Value>
+				<Value type="byte" genre="config" instance="1" index="33" label="MSB SKU part numbers" units="" read_only="false" write_only="false" verify_changes="false" poll_intensity="0" min="0" max="255" value="101">
+					<Help>The Configuration Parameter 33 and 34 are used to set the SKU part numbers to the Kwikset locks. Is the first four most significant bytes (MSB). Below describes how Configuration Parameter 33 and 34 are being used. * For a ZW Configuration Set, the DLM will first do a GET_SKU_ID to retrieve the full SKU from the lock, and the lock will respond with all 8 bytes. (If it not yet set, the DLM will consider that as all 0x30s.) The DLM changes only the appropriate 4 bytes in its local copy of the SKU, and it then sends the full 8 bytes down to the lock in a SET_SKU_ID. * For a ZW Configuration Get, the DLM will do a GET_SKU_ID down to the lock, to which the lock will respond with all 8 bytes. The DLM will return the requested 4 bytes via ZW. If the SKU is not set, it will return all 0x30s (ASCII 0s).</Help>
+				</Value>
+				<Value type="byte" genre="config" instance="1" index="34" label="LSB SKU part numbers" units="" read_only="false" write_only="false" verify_changes="false" poll_intensity="0" min="0" max="255" value="101">
+					<Help>The Configuration Parameter 33 and 34 are used to set the SKU part numbers to the Kwikset locks. Is the least four significant bytes (LSB).</Help>
+				</Value>
+				<Value type="short" genre="config" instance="1" index="35" label="lock type" units="" read_only="true" write_only="false" verify_changes="false" poll_intensity="0" min="-32768" max="32767" value="0">
+					<Help>Unique ID of the lock type 910 Z-Wave (Legacy, FW 3.4) 0x00 0x00 912 Z-Wave (Legacy, FW 3.2) 0x00 0x00 910 Z-Wave 0x02 0x36 912 Z-Wave 0x03 0x36 914 Z-Wave 0x04 0x36 916 Z-Wave 0x06 0x42</Help>
+				</Value>
+				<Value type="list" genre="config" instance="1" index="40" label="Reset To Factory Defaults" units="" read_only="false" write_only="true" verify_changes="false" poll_intensity="0" min="0" max="0" vindex="1" size="1">
+					<Help>Reset to factory defaults</Help>
+					<Item label="Do reset" value="1" />
+					<Item label="Normal" value="0" />
+				</Value>
+			</CommandClass>
+			<CommandClass id="113" name="COMMAND_CLASS_ALARM" version="1" request_flags="6" issecured="true">
+				<Instance index="1" />
+				<Value type="byte" genre="user" instance="1" index="0" label="Alarm Type" units="" read_only="true" write_only="false" verify_changes="false" poll_intensity="0" min="0" max="255" value="21" />
+				<Value type="byte" genre="user" instance="1" index="1" label="Alarm Level" units="" read_only="true" write_only="false" verify_changes="false" poll_intensity="0" min="0" max="255" value="1" />
+				<TriggerRefreshValue Genre="user" Instance="1" Index="0">
+					<RefreshClassValue CommandClass="98" RequestFlags="0" Instance="1" Index="1" />
+				</TriggerRefreshValue>
+			</CommandClass>
+			<CommandClass id="114" name="COMMAND_CLASS_MANUFACTURER_SPECIFIC" version="1" request_flags="4" issecured="true" innif="true">
+				<Instance index="1" />
+			</CommandClass>
+			<CommandClass id="117" name="COMMAND_CLASS_PROTECTION" version="1" request_flags="4" issecured="true">
+				<Instance index="1" />
+				<Value type="list" genre="system" instance="1" index="0" label="Protection" units="" read_only="false" write_only="false" verify_changes="false" poll_intensity="0" min="0" max="0" vindex="0" size="1">
+					<Item label="Unprotected" value="0" />
+					<Item label="Protection by Sequence" value="1" />
+					<Item label="No Operation Possible" value="2" />
+				</Value>
+			</CommandClass>
+			<CommandClass id="128" name="COMMAND_CLASS_BATTERY" version="1" request_flags="4" issecured="true">
+				<Instance index="1" />
+				<Value type="byte" genre="user" instance="1" index="0" label="Battery Level" units="%" read_only="true" write_only="false" verify_changes="false" poll_intensity="0" min="0" max="255" value="90" />
+			</CommandClass>
+			<CommandClass id="133" name="COMMAND_CLASS_ASSOCIATION" version="1" request_flags="6" issecured="true">
+				<Instance index="1" />
+				<Associations num_groups="1">
+					<Group index="1" max_associations="5" label="Lifeline" auto="true">
+						<Node id="1" />
+					</Group>
+				</Associations>
+			</CommandClass>
+			<CommandClass id="134" name="COMMAND_CLASS_VERSION" version="1" request_flags="4" issecured="true" innif="true">
+				<Instance index="1" />
+				<Value type="string" genre="system" instance="1" index="0" label="Library Version" units="" read_only="true" write_only="false" verify_changes="false" poll_intensity="0" min="0" max="0" value="6" />
+				<Value type="string" genre="system" instance="1" index="1" label="Protocol Version" units="" read_only="true" write_only="false" verify_changes="false" poll_intensity="0" min="0" max="0" value="3.67" />
+				<Value type="string" genre="system" instance="1" index="2" label="Application Version" units="" read_only="true" write_only="false" verify_changes="false" poll_intensity="0" min="0" max="0" value="3.37" />
+			</CommandClass>
+			<CommandClass id="139" name="COMMAND_CLASS_TIME_PARAMETERS" version="1" request_flags="4" issecured="true">
+				<Instance index="1" />
+				<Value type="string" genre="system" instance="1" index="0" label="Date" units="" read_only="true" write_only="false" verify_changes="false" poll_intensity="0" min="0" max="0" value="06/01/2000" />
+				<Value type="string" genre="system" instance="1" index="1" label="Time" units="" read_only="true" write_only="false" verify_changes="false" poll_intensity="0" min="0" max="0" value="10:19:11" />
+				<Value type="button" genre="system" instance="1" index="2" label="Set Date/Time" units="" read_only="false" write_only="true" verify_changes="false" poll_intensity="0" min="0" max="0" />
+				<Value type="button" genre="system" instance="1" index="3" label="Refresh Date/Time" units="" read_only="false" write_only="true" verify_changes="false" poll_intensity="0" min="0" max="0" />
+			</CommandClass>
+			<CommandClass id="152" name="COMMAND_CLASS_SECURITY" version="1" request_flags="4" innif="true">
+				<Instance index="1" />
+				<Value type="bool" genre="system" instance="1" index="0" label="Secured" units="" read_only="true" write_only="false" verify_changes="false" poll_intensity="0" min="0" max="0" value="True" />
+			</CommandClass>
+		</CommandClasses>
+	</Node>
+	<Node id="10" name="Chandelier" location="" basic="4" generic="17" specific="4" type="Multilevel Scene Switch" listening="true" frequentListening="false" beaming="true" routing="true" max_baud_rate="40000" version="4" query_stage="Complete">
+		<Manufacturer id="86" name="Aeotec">
+			<Product type="3" id="1b" name="DSC27103 Micro Dimmer (2nd Edition)" />
+		</Manufacturer>
+		<CommandClasses>
+			<CommandClass id="32" name="COMMAND_CLASS_BASIC" version="1" request_flags="4" mapping="38">
+				<Instance index="1" />
+			</CommandClass>
+			<CommandClass id="38" name="COMMAND_CLASS_SWITCH_MULTILEVEL" version="2" innif="true">
+				<Instance index="1" />
+				<Value type="byte" genre="user" instance="1" index="0" label="Level" units="" read_only="false" write_only="false" verify_changes="false" poll_intensity="0" min="0" max="255" value="0" />
+				<Value type="button" genre="user" instance="1" index="1" label="Bright" units="" read_only="false" write_only="true" verify_changes="false" poll_intensity="0" min="0" max="0" />
+				<Value type="button" genre="user" instance="1" index="2" label="Dim" units="" read_only="false" write_only="true" verify_changes="false" poll_intensity="0" min="0" max="0" />
+				<Value type="bool" genre="system" instance="1" index="3" label="Ignore Start Level" units="" read_only="false" write_only="false" verify_changes="false" poll_intensity="0" min="0" max="0" value="True" />
+				<Value type="byte" genre="system" instance="1" index="4" label="Start Level" units="" read_only="false" write_only="false" verify_changes="false" poll_intensity="0" min="0" max="255" value="0" />
+				<Value type="byte" genre="system" instance="1" index="5" label="Dimming Duration" units="" read_only="false" write_only="false" verify_changes="false" poll_intensity="0" min="0" max="255" value="255" />
+			</CommandClass>
+			<CommandClass id="39" name="COMMAND_CLASS_SWITCH_ALL" version="1" request_flags="4" innif="true">
+				<Instance index="1" />
+				<Value type="list" genre="system" instance="1" index="0" label="Switch All" units="" read_only="false" write_only="false" verify_changes="false" poll_intensity="0" min="0" max="0" vindex="3" size="1">
+					<Item label="Disabled" value="0" />
+					<Item label="Off Enabled" value="1" />
+					<Item label="On Enabled" value="2" />
+					<Item label="On and Off Enabled" value="255" />
+				</Value>
+			</CommandClass>
+			<CommandClass id="43" name="COMMAND_CLASS_SCENE_ACTIVATION" version="1" request_flags="4" innif="true">
+				<Instance index="1" />
+			</CommandClass>
+			<CommandClass id="112" name="COMMAND_CLASS_CONFIGURATION" version="1" request_flags="4" innif="true">
+				<Instance index="1" />
+				<Value type="short" genre="config" instance="1" index="2" label="Make SEI blink" units="" read_only="false" write_only="false" verify_changes="false" poll_intensity="0" min="0" max="65535" value="0">
+					<Help>Configuration Value 1 is to Specify the time that SEI need blink (0-255), the unit is second; Configuration Value 2 is to Specify the Cycle of on/off (0-255), the unit of it is 0.1 second.</Help>
+				</Value>
+				<Value type="list" genre="config" instance="1" index="13" label="CRC16 encapsulation" units="" read_only="false" write_only="false" verify_changes="false" poll_intensity="0" min="0" max="1" vindex="0" size="1">
+					<Help>Enable/Disable CRC16 encapsulation</Help>
+					<Item label="Disable" value="0" />
+					<Item label="Enable" value="1" />
+				</Value>
+				<Value type="list" genre="config" instance="1" index="80" label="Notification status" units="" read_only="false" write_only="false" verify_changes="false" poll_intensity="0" min="0" max="2" vindex="0" size="1">
+					<Help>Defines the automated status notification of an associated device when status changes</Help>
+					<Item label="Nothing" value="0" />
+					<Item label="Hail" value="1" />
+					<Item label="Basic" value="2" />
+				</Value>
+				<Value type="list" genre="config" instance="1" index="120" label="Turn external button" units="" read_only="false" write_only="false" verify_changes="false" poll_intensity="0" min="0" max="255" vindex="3" size="1">
+					<Help>Turn external button mode</Help>
+					<Item label="Momentary button" value="0" />
+					<Item label="2 state switch" value="1" />
+					<Item label="3 way switch " value="2" />
+					<Item label="Unidentified" value="255" />
+				</Value>
+				<Value type="list" genre="config" instance="1" index="200" label="Partner ID" units="" read_only="false" write_only="false" verify_changes="false" poll_intensity="0" min="0" max="1" vindex="0" size="1">
+					<Help>Partner ID</Help>
+					<Item label="Aeon Labs Standard (Default)" value="0" />
+					<Item label="AT&amp;T" value="1" />
+				</Value>
+				<Value type="list" genre="config" instance="1" index="252" label="Configuration Locked" units="" read_only="false" write_only="false" verify_changes="false" poll_intensity="0" min="0" max="1" vindex="0" size="1">
+					<Help>Enable/disable Configuration Locked</Help>
+					<Item label="Disable" value="0" />
+					<Item label="Enable" value="1" />
+				</Value>
+				<Value type="short" genre="config" instance="1" index="254" label="Device tag" units="" read_only="false" write_only="false" verify_changes="false" poll_intensity="0" min="0" max="65535" value="0">
+					<Help>Device tag.</Help>
+				</Value>
+				<Value type="button" genre="config" instance="1" index="255" label="Reset device" units="" read_only="false" write_only="true" verify_changes="false" poll_intensity="0" min="0" max="0">
+					<Help>Reset to the default configuration.</Help>
+				</Value>
+			</CommandClass>
+			<CommandClass id="114" name="COMMAND_CLASS_MANUFACTURER_SPECIFIC" version="1" request_flags="4" innif="true">
+				<Instance index="1" />
+			</CommandClass>
+			<CommandClass id="130" name="COMMAND_CLASS_HAIL" version="1" request_flags="4" after_mark="true" innif="true">
+				<Instance index="1" />
+			</CommandClass>
+			<CommandClass id="133" name="COMMAND_CLASS_ASSOCIATION" version="1" request_flags="4" innif="true">
+				<Instance index="1" />
+				<Associations num_groups="1">
+					<Group index="1" max_associations="5" label="Lifeline" auto="true">
+						<Node id="1" />
+					</Group>
+				</Associations>
+			</CommandClass>
+			<CommandClass id="134" name="COMMAND_CLASS_VERSION" version="1" request_flags="4" innif="true">
+				<Instance index="1" />
+				<Value type="string" genre="system" instance="1" index="0" label="Library Version" units="" read_only="true" write_only="false" verify_changes="false" poll_intensity="0" min="0" max="0" value="3" />
+				<Value type="string" genre="system" instance="1" index="1" label="Protocol Version" units="" read_only="true" write_only="false" verify_changes="false" poll_intensity="0" min="0" max="0" value="3.40" />
+				<Value type="string" genre="system" instance="1" index="2" label="Application Version" units="" read_only="true" write_only="false" verify_changes="false" poll_intensity="0" min="0" max="0" value="1.15" />
+			</CommandClass>
+		</CommandClasses>
+	</Node>
+	<Node id="11" name="" location="" basic="4" generic="33" specific="1" type="Routing Multilevel Sensor" listening="true" frequentListening="false" beaming="true" routing="true" max_baud_rate="40000" version="3" query_stage="Complete">
 		<Manufacturer id="86" name="Aeotec">
 			<Product type="2" id="9" name="DSB09104 Home Energy Meter" />
 		</Manufacturer>
@@ -25,30 +435,30 @@
 				<Instance index="1" />
 				<Instance index="2" endpoint="1" />
 				<Instance index="3" endpoint="2" />
-				<Value type="decimal" genre="user" instance="1" index="4" label="Power" units="W" read_only="true" write_only="false" verify_changes="false" poll_intensity="0" min="0" max="0" value="0.000" />
-				<Value type="decimal" genre="user" instance="2" index="4" label="Power" units="W" read_only="true" write_only="false" verify_changes="false" poll_intensity="0" min="0" max="0" value="0.000" />
-				<Value type="decimal" genre="user" instance="3" index="4" label="Power" units="W" read_only="true" write_only="false" verify_changes="false" poll_intensity="0" min="0" max="0" value="0.000" />
+				<Value type="decimal" genre="user" instance="1" index="4" label="Power" units="W" read_only="true" write_only="false" verify_changes="false" poll_intensity="0" min="0" max="0" value="573.760" />
+				<Value type="decimal" genre="user" instance="2" index="4" label="Power" units="W" read_only="true" write_only="false" verify_changes="false" poll_intensity="0" min="0" max="0" value="546.700" />
+				<Value type="decimal" genre="user" instance="3" index="4" label="Power" units="W" read_only="true" write_only="false" verify_changes="false" poll_intensity="0" min="0" max="0" value="135.740" />
 			</CommandClass>
 			<CommandClass id="50" name="COMMAND_CLASS_METER" version="2" request_flags="3" innif="true">
 				<Instance index="1" />
 				<Instance index="2" endpoint="1" />
 				<Instance index="3" endpoint="2" />
-				<Value type="decimal" genre="user" instance="1" index="0" label="Energy" units="kWh" read_only="true" write_only="false" verify_changes="false" poll_intensity="0" min="0" max="0" value="0.000" />
-				<Value type="decimal" genre="user" instance="1" index="1" label="Previous Reading" units="kWh" read_only="true" write_only="false" verify_changes="false" poll_intensity="0" min="0" max="0" value="0.000" />
-				<Value type="int" genre="user" instance="1" index="2" label="Interval" units="seconds" read_only="true" write_only="false" verify_changes="false" poll_intensity="0" min="-2147483648" max="2147483647" value="554" />
-				<Value type="decimal" genre="user" instance="1" index="8" label="Power" units="W" read_only="true" write_only="false" verify_changes="false" poll_intensity="0" min="0" max="0" value="0.000" />
+				<Value type="decimal" genre="user" instance="1" index="0" label="Energy" units="kWh" read_only="true" write_only="false" verify_changes="false" poll_intensity="1" min="0" max="0" value="3.097" />
+				<Value type="decimal" genre="user" instance="1" index="1" label="Previous Reading" units="kWh" read_only="true" write_only="false" verify_changes="false" poll_intensity="0" min="0" max="0" value="3.089" />
+				<Value type="int" genre="user" instance="1" index="2" label="Interval" units="seconds" read_only="true" write_only="false" verify_changes="false" poll_intensity="0" min="-2147483648" max="2147483647" value="90" />
+				<Value type="decimal" genre="user" instance="1" index="8" label="Power" units="W" read_only="true" write_only="false" verify_changes="false" poll_intensity="0" min="0" max="0" value="572.660" />
 				<Value type="bool" genre="user" instance="1" index="32" label="Exporting" units="" read_only="true" write_only="false" verify_changes="false" poll_intensity="0" min="0" max="0" value="False" />
 				<Value type="button" genre="system" instance="1" index="33" label="Reset" units="" read_only="false" write_only="true" verify_changes="false" poll_intensity="0" min="0" max="0" />
-				<Value type="decimal" genre="user" instance="2" index="0" label="Energy" units="kWh" read_only="true" write_only="false" verify_changes="false" poll_intensity="0" min="0" max="0" value="0.000" />
-				<Value type="decimal" genre="user" instance="2" index="1" label="Previous Reading" units="kWh" read_only="true" write_only="false" verify_changes="false" poll_intensity="0" min="0" max="0" value="0.000" />
-				<Value type="int" genre="user" instance="2" index="2" label="Interval" units="seconds" read_only="true" write_only="false" verify_changes="false" poll_intensity="0" min="-2147483648" max="2147483647" value="555" />
-				<Value type="decimal" genre="user" instance="2" index="8" label="Power" units="W" read_only="true" write_only="false" verify_changes="false" poll_intensity="0" min="0" max="0" value="0.000" />
+				<Value type="decimal" genre="user" instance="2" index="0" label="Energy" units="kWh" read_only="true" write_only="false" verify_changes="false" poll_intensity="0" min="0" max="0" value="2.089" />
+				<Value type="decimal" genre="user" instance="2" index="1" label="Previous Reading" units="kWh" read_only="true" write_only="false" verify_changes="false" poll_intensity="0" min="0" max="0" value="2.081" />
+				<Value type="int" genre="user" instance="2" index="2" label="Interval" units="seconds" read_only="true" write_only="false" verify_changes="false" poll_intensity="0" min="-2147483648" max="2147483647" value="90" />
+				<Value type="decimal" genre="user" instance="2" index="8" label="Power" units="W" read_only="true" write_only="false" verify_changes="false" poll_intensity="1" min="0" max="0" value="474.870" />
 				<Value type="bool" genre="user" instance="2" index="32" label="Exporting" units="" read_only="true" write_only="false" verify_changes="false" poll_intensity="0" min="0" max="0" value="False" />
 				<Value type="button" genre="system" instance="2" index="33" label="Reset" units="" read_only="false" write_only="true" verify_changes="false" poll_intensity="0" min="0" max="0" />
-				<Value type="decimal" genre="user" instance="3" index="0" label="Energy" units="kWh" read_only="true" write_only="false" verify_changes="false" poll_intensity="0" min="0" max="0" value="0.000" />
-				<Value type="decimal" genre="user" instance="3" index="1" label="Previous Reading" units="kWh" read_only="true" write_only="false" verify_changes="false" poll_intensity="0" min="0" max="0" value="0.000" />
-				<Value type="int" genre="user" instance="3" index="2" label="Interval" units="seconds" read_only="true" write_only="false" verify_changes="false" poll_intensity="0" min="-2147483648" max="2147483647" value="554" />
-				<Value type="decimal" genre="user" instance="3" index="8" label="Power" units="W" read_only="true" write_only="false" verify_changes="false" poll_intensity="0" min="0" max="0" value="0.000" />
+				<Value type="decimal" genre="user" instance="3" index="0" label="Energy" units="kWh" read_only="true" write_only="false" verify_changes="false" poll_intensity="0" min="0" max="0" value="1.001" />
+				<Value type="decimal" genre="user" instance="3" index="1" label="Previous Reading" units="kWh" read_only="true" write_only="false" verify_changes="false" poll_intensity="0" min="0" max="0" value="0.998" />
+				<Value type="int" genre="user" instance="3" index="2" label="Interval" units="seconds" read_only="true" write_only="false" verify_changes="false" poll_intensity="0" min="-2147483648" max="2147483647" value="90" />
+				<Value type="decimal" genre="user" instance="3" index="8" label="Power" units="W" read_only="true" write_only="false" verify_changes="false" poll_intensity="1" min="0" max="0" value="102.850" />
 				<Value type="bool" genre="user" instance="3" index="32" label="Exporting" units="" read_only="true" write_only="false" verify_changes="false" poll_intensity="0" min="0" max="0" value="False" />
 				<Value type="button" genre="system" instance="3" index="33" label="Reset" units="" read_only="false" write_only="true" verify_changes="false" poll_intensity="0" min="0" max="0" />
 			</CommandClass>
@@ -60,43 +470,43 @@
 				<Value type="short" genre="config" instance="1" index="1" label="Country Voltage" units="volts" read_only="false" write_only="false" verify_changes="false" poll_intensity="0" min="0" max="240" value="120">
 					<Help>Voltage to calculate wattage from amperage. US=120. EU,ANZ=240.</Help>
 				</Value>
-				<Value type="byte" genre="config" instance="1" index="3" label="Power changed" units="" read_only="false" write_only="false" verify_changes="false" poll_intensity="0" min="0" max="1" value="0">
+				<Value type="byte" genre="config" instance="1" index="3" label="Power changed" units="" read_only="false" write_only="false" verify_changes="false" poll_intensity="0" min="0" max="1" value="1">
 					<Help>Automatic report only when power is changed.</Help>
 				</Value>
-				<Value type="short" genre="config" instance="1" index="4" label="Wattage Threshold" units="watts" read_only="false" write_only="false" verify_changes="false" poll_intensity="0" min="-32768" max="32767" value="50">
+				<Value type="short" genre="config" instance="1" index="4" label="Wattage Threshold" units="watts" read_only="false" write_only="false" verify_changes="false" poll_intensity="0" min="-32768" max="32767" value="10">
 					<Help>Threshold change in wattage to induce a automatic report (whole HEM).</Help>
 				</Value>
-				<Value type="short" genre="config" instance="1" index="5" label="Wattage Threshold C1" units="watts" read_only="false" write_only="false" verify_changes="false" poll_intensity="0" min="-32768" max="32767" value="50">
+				<Value type="short" genre="config" instance="1" index="5" label="Wattage Threshold C1" units="watts" read_only="false" write_only="false" verify_changes="false" poll_intensity="0" min="-32768" max="32767" value="10">
 					<Help>Threshold change in wattage to induce a automatic report (Clamp 1).</Help>
 				</Value>
-				<Value type="short" genre="config" instance="1" index="6" label="Wattage Threshold C2" units="watts" read_only="false" write_only="false" verify_changes="false" poll_intensity="0" min="-32768" max="32767" value="50">
+				<Value type="short" genre="config" instance="1" index="6" label="Wattage Threshold C2" units="watts" read_only="false" write_only="false" verify_changes="false" poll_intensity="0" min="-32768" max="32767" value="10">
 					<Help>Threshold change in wattage to induce a automatic report (Clamp 2).</Help>
 				</Value>
-				<Value type="short" genre="config" instance="1" index="7" label="Wattage Threshold C3" units="watts" read_only="false" write_only="false" verify_changes="false" poll_intensity="0" min="-32768" max="32767" value="50">
+				<Value type="short" genre="config" instance="1" index="7" label="Wattage Threshold C3" units="watts" read_only="false" write_only="false" verify_changes="false" poll_intensity="0" min="-32768" max="32767" value="10">
 					<Help>Threshold change in wattage to induce a automatic report (Clamp 3).</Help>
 				</Value>
-				<Value type="byte" genre="config" instance="1" index="8" label="Wattage Percentage Change" units="%" read_only="false" write_only="false" verify_changes="false" poll_intensity="0" min="0" max="255" value="10">
+				<Value type="byte" genre="config" instance="1" index="8" label="Wattage Percentage Change" units="%" read_only="false" write_only="false" verify_changes="false" poll_intensity="0" min="0" max="255" value="3">
 					<Help>Percentage change in wattage to induce a automatic report (whole HEM).</Help>
 				</Value>
-				<Value type="byte" genre="config" instance="1" index="9" label="Wattage Percentage Change C1" units="%" read_only="false" write_only="false" verify_changes="false" poll_intensity="0" min="0" max="255" value="10">
+				<Value type="byte" genre="config" instance="1" index="9" label="Wattage Percentage Change C1" units="%" read_only="false" write_only="false" verify_changes="false" poll_intensity="0" min="0" max="255" value="3">
 					<Help>Percentage change in wattage to induce a automatic report (Clamp 1).</Help>
 				</Value>
-				<Value type="byte" genre="config" instance="1" index="10" label="Wattage Percentage Change C2" units="%" read_only="false" write_only="false" verify_changes="false" poll_intensity="0" min="0" max="255" value="10">
+				<Value type="byte" genre="config" instance="1" index="10" label="Wattage Percentage Change C2" units="%" read_only="false" write_only="false" verify_changes="false" poll_intensity="0" min="0" max="255" value="3">
 					<Help>Percentage change in wattage to induce a automatic report (Clamp 2).</Help>
 				</Value>
-				<Value type="byte" genre="config" instance="1" index="11" label="Wattage Percentage Change C3" units="%" read_only="false" write_only="false" verify_changes="false" poll_intensity="0" min="0" max="255" value="10">
+				<Value type="byte" genre="config" instance="1" index="11" label="Wattage Percentage Change C3" units="%" read_only="false" write_only="false" verify_changes="false" poll_intensity="0" min="0" max="255" value="3">
 					<Help>Percentage change in wattage to induce a automatic report (Clamp 3).</Help>
 				</Value>
 				<Value type="byte" genre="config" instance="1" index="12" label="Accumulate energy" units="" read_only="false" write_only="false" verify_changes="false" poll_intensity="0" min="0" max="1" value="0">
 					<Help>Accumulate energy when Battery Powered.</Help>
 				</Value>
-				<Value type="byte" genre="config" instance="1" index="20" label="USB powered" units="" read_only="true" write_only="false" verify_changes="false" poll_intensity="0" min="0" max="1" value="0">
+				<Value type="byte" genre="config" instance="1" index="20" label="USB powered" units="" read_only="true" write_only="false" verify_changes="false" poll_intensity="0" min="0" max="1" value="1">
 					<Help>This byte denotes whether the product is using batteries (value = 0) or using USB power (value = 1).</Help>
 				</Value>
 				<Value type="int" genre="config" instance="1" index="100" label="Reset #101-103" units="" read_only="false" write_only="true" verify_changes="false" poll_intensity="0" min="-2147483648" max="2147483647" affects="101,102,103" value="0">
 					<Help>Reset to default parameters number 101-103. Any value other then 0 will initiate this reset.</Help>
 				</Value>
-				<Value type="int" genre="config" instance="1" index="101" label="Group 1 Reports" units="" read_only="false" write_only="false" verify_changes="false" poll_intensity="0" min="-2147483648" max="2147483647" value="0">
+				<Value type="int" genre="config" instance="1" index="101" label="Group 1 Reports" units="" read_only="false" write_only="false" verify_changes="false" poll_intensity="0" min="-2147483648" max="2147483647" value="771">
 					<Help>Which reports need to send in group1. Format is as follows: Byte 1 (msb): Reserved Byte 2: Reserved Byte 3: Bit 7: reserved Bit 6: reserved Bit 5: Auto Send Meter Report (for kWh) at the group time interval (Clamp 3) Bit 4: Auto Send Meter Report (for kWh) at the group time interval (Clamp 2) Bit 3: Auto Send Meter Report (for kWh) at the group time interval (Clamp 1) Bit 2: Auto Send Meter Report (for watts) at the group time interval (Clamp 3) Bit 1: Auto Send Meter Report (for watts) at the group time interval (Clamp 2) Bit 0: Auto Send Meter Report (for watts) at the group time interval (Clamp 1) Byte 4 (lsb): Bit 7: reserved Bit 6: reserved Bit 5: reserved Bit 4: reserved Bit 3: Auto Send Meter Report (for kWh) at the group time interval (whole HEM) Bit 2: Auto Send Meter Report (for watts) at the group time interval (whole HEM) Bit 1: Auto Send Multilevel Sensor Report (for watts) at the group time interval (whole HEM) Bit 0: Auto Send Battery Report at the group time interval (whole HEM)</Help>
 				</Value>
 				<Value type="int" genre="config" instance="1" index="102" label="Group 2 Reports" units="" read_only="false" write_only="false" verify_changes="false" poll_intensity="0" min="-2147483648" max="2147483647" value="0">
@@ -108,13 +518,13 @@
 				<Value type="int" genre="config" instance="1" index="110" label="Reset #111-113" units="" read_only="false" write_only="true" verify_changes="false" poll_intensity="0" min="-2147483648" max="2147483647" affects="111,112,113" value="0">
 					<Help>Reset to default parameters number 111-113. Any value other then 0 will initiate this reset.</Help>
 				</Value>
-				<Value type="int" genre="config" instance="1" index="111" label="Group 1 Interval" units="seconds" read_only="false" write_only="false" verify_changes="false" poll_intensity="0" min="-2147483648" max="2147483647" value="720">
+				<Value type="int" genre="config" instance="1" index="111" label="Group 1 Interval" units="seconds" read_only="false" write_only="false" verify_changes="false" poll_intensity="0" min="-2147483648" max="2147483647" value="30">
 					<Help>The interval of sending report group 1.</Help>
 				</Value>
-				<Value type="int" genre="config" instance="1" index="112" label="Group 2 Interval" units="seconds" read_only="false" write_only="false" verify_changes="false" poll_intensity="0" min="-2147483648" max="2147483647" value="720">
+				<Value type="int" genre="config" instance="1" index="112" label="Group 2 Interval" units="seconds" read_only="false" write_only="false" verify_changes="false" poll_intensity="0" min="-2147483648" max="2147483647" value="40">
 					<Help>The interval of sending report group 2.</Help>
 				</Value>
-				<Value type="int" genre="config" instance="1" index="113" label="Group 3 Interval" units="seconds" read_only="false" write_only="false" verify_changes="false" poll_intensity="0" min="-2147483648" max="2147483647" value="720">
+				<Value type="int" genre="config" instance="1" index="113" label="Group 3 Interval" units="seconds" read_only="false" write_only="false" verify_changes="false" poll_intensity="0" min="-2147483648" max="2147483647" value="50">
 					<Help>The interval of sending report group 3.</Help>
 				</Value>
 				<Value type="int" genre="config" instance="1" index="253" label="Unit Recalibration (dangerous)" units="" read_only="false" write_only="true" verify_changes="false" poll_intensity="0" min="-2147483648" max="2147483647" value="0">
@@ -132,7 +542,7 @@
 			</CommandClass>
 			<CommandClass id="128" name="COMMAND_CLASS_BATTERY" version="1" request_flags="5" innif="true">
 				<Instance index="1" />
-				<Value type="byte" genre="user" instance="1" index="0" label="Battery Level" units="%" read_only="true" write_only="false" verify_changes="false" poll_intensity="0" min="0" max="255" value="0" />
+				<Value type="byte" genre="user" instance="1" index="0" label="Battery Level" units="%" read_only="true" write_only="false" verify_changes="false" poll_intensity="0" min="0" max="255" value="100" />
 			</CommandClass>
 			<CommandClass id="132" name="COMMAND_CLASS_WAKE_UP" version="1" request_flags="2" create_vars="false">
 				<Instance index="1" />
@@ -149,7 +559,7 @@
 				<Instance index="1" />
 				<Value type="string" genre="system" instance="1" index="0" label="Library Version" units="" read_only="true" write_only="false" verify_changes="false" poll_intensity="0" min="0" max="0" value="3" />
 				<Value type="string" genre="system" instance="1" index="1" label="Protocol Version" units="" read_only="true" write_only="false" verify_changes="false" poll_intensity="0" min="0" max="0" value="2.78" />
-				<Value type="string" genre="system" instance="1" index="2" label="Application Version" units="" read_only="true" write_only="false" verify_changes="false" poll_intensity="0" min="0" max="0" value="3.60" />
+				<Value type="string" genre="system" instance="1" index="2" label="Application Version" units="" read_only="true" write_only="false" verify_changes="false" poll_intensity="0" min="0" max="0" value="3.67" />
 			</CommandClass>
 		</CommandClasses>
 	</Node>

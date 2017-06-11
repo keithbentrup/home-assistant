@@ -1,8 +1,10 @@
-sensor.aeotec_dsb09104_home_energy_meter_previous_reading_2_1_3:
-  friendly_name: Prev Reading
-sensor.aeotec_dsb09104_home_energy_meter_energy_2_0_3:
-  friendly_name: Cur Energy Meter
-sensor.aeotec_dsb09104_home_energy_meter_interval_2_2_3:
-  friendly_name: Energy Meter Interval
-sensor.aeotec_dsb09104_home_energy_meter_power_2_8_3:
-  friendly_name: Power
+sensor.aeotec_dsb09104_home_energy_meter_power_11_8:
+  friendly_name: Total Power
+sensor.aeotec_dsb09104_home_energy_meter_power_11_8_2:
+  friendly_name: Power C2
+sensor.aeotec_dsb09104_home_energy_meter_power_11_8_3:
+  friendly_name: Power C1
+sensor.aeotec_dsb09104_home_energy_meter_energy_11_0:
+  friendly_name: KWH
+lock.kwikset_touchpad_electronic_deadbolt_locked_9_0:
+  friendly_name: Front Door Lock
