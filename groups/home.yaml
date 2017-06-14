@@ -3,7 +3,7 @@ Home:
   entities:
     - device_tracker.androidea3abc784f46ce1e
     - device_tracker.android96ec900e05631826
-    - lock.fron_door_locked_9_0
+    - lock.front_door_locked_9_0
     - sensor.aeotec_dsb09104_home_energy_meter_energy_11_0
     - sensor.aeotec_dsb09104_home_energy_meter_power_11_8_3
     - sensor.aeotec_dsb09104_home_energy_meter_power_11_8_2

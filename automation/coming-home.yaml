@@ -2,7 +2,6 @@ alias: Coming home
 trigger:
   platform: state
   entity_id: device_tracker.androidea3abc784f46ce1e, device_tracker.android96ec900e05631826
-#  state: 'home'
   from: 'not_home'
   to: 'home'
   for:
