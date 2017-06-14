@@ -6,5 +6,5 @@ sensor.aeotec_dsb09104_home_energy_meter_power_11_8_3:
   friendly_name: Power C1
 sensor.aeotec_dsb09104_home_energy_meter_energy_11_0:
   friendly_name: KWH
-lock.kwikset_touchpad_electronic_deadbolt_locked_9_0:
+lock.front_door_locked_9_0:
   friendly_name: Front Door Lock

@@ -1,36 +1,68 @@
 platform: rpi_rf
 gpio: 17
 switches:
-  # switch_1:
+  # switch_0317_1:
   alfred_outlet:
     code_on: 1381683
     code_off: 1381692
     protocol: 1
-    pulselength: 183
-  # switch_2:
+    pulselength: 181
+  # switch_0317_2:
   bedroom_light:
     code_on: 1381827
     code_off: 1381836
     protocol: 1
-    pulselength: 183
-  # switch_3:
+    pulselength: 182
+  # switch_0317_3:
   living_room_light:
     code_on: 1382147
     code_off: 1382156
     protocol: 1
-    pulselength: 183
-  # switch_4
+    pulselength: 182
+  # switch_0317_4
   office_light:
    code_on: 1383683
    code_off: 1383692
    protocol: 1
-   pulselength: 183
-  # switch_5:
+   pulselength: 182
+  # switch_0317_5:
   house_fan:
     code_on: 1389827
     code_off: 1389836
     protocol: 1
-    pulselength: 183
+    pulselength: 182
+
+  # switch_0328_1:
+  swithch1:
+    code_on: 5248307
+    code_off: 5248316
+    protocol: 1
+    pulselength: 180
+  # switch_0328_2:
+  office_outlet:
+    code_on: 5248451
+    code_off: 5248460
+    protocol: 1
+    pulselength: 180
+  # switch_0328_3:
+  entertainment_center:
+    code_on: 5248771
+    code_off: 5248780
+    protocol: 1
+    pulselength: 180
+  # switch_0328_4
+  printers:
+   code_on: 5250307
+   code_off: 5250316
+   protocol: 1
+   pulselength: 180
+  # switch_0328_5:
+  switch5:
+    code_on: 5256451
+    code_off: 5256460
+    protocol: 1
+    pulselength: 180
+
 
 #  toggle_1:
 #    code_on: 4150275
