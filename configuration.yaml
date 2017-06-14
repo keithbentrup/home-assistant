@@ -27,8 +27,8 @@ http:
   # Uncomment this if you are using SSL or running in Docker etc
   # base_url: example.duckdns.org:8123
   server_port: 8124
-  ssl_certificate: /home/homeassistant/.homeassistant/certs/fullchain1.pem
-  ssl_key: /home/homeassistant/.homeassistant/certs/privkey1.pem
+  ssl_certificate: /home/homeassistant/.homeassistant/certs/fullchain.pem
+  ssl_key: /home/homeassistant/.homeassistant/certs/privkey.pem
 
 # Checks for available updates
 updater:
@@ -77,7 +77,7 @@ emulated_hue:
 device_tracker:
   - platform: ddwrt
     host: 192.168.4.1
-    username: root
+    username: admin
     password: !secret device_tracker_ddwrt_password
     consider_home: 60
     interval_seconds: 12
@@ -141,10 +141,9 @@ twilio:
 notify: !include_dir_list notifiers/
 automation: !include_dir_list automation/
 switch: !include_dir_list switches/
-group: !include_dir_merge_named groups/
+#group: !include_dir_merge_named groups/
 
-zwave:
-    usb_path: /dev/ttyACM0
+zwave: !include zwave.yaml
 
 #media_player:
 #  - platform: cast
@@ -162,4 +161,7 @@ zwave:
 #  - host: 192.168.4.7
 #    name: Moto G 2nd Gen
 
+nest:
+  client_id: !secret nest_client_id
+  client_secret: !secret nest_client_secret
 
