@@ -1,5 +1,13 @@
-home:
+Home:
   view: no
   entities:
-    - device_tracker.androidf34dc1ff9bd9fbb5
     - device_tracker.androidea3abc784f46ce1e
+    - device_tracker.android96ec900e05631826
+    - lock.fron_door_locked_9_0
+    - sensor.aeotec_dsb09104_home_energy_meter_energy_11_0
+    - sensor.aeotec_dsb09104_home_energy_meter_power_11_8_3
+    - sensor.aeotec_dsb09104_home_energy_meter_power_11_8_2
+    - sensor.aeotec_dsb09104_home_energy_meter_power_11_8
+    - camera.entryway_home
+    - light.chandelier_level_10_0
+
