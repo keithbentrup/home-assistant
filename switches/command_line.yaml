@@ -1,7 +1,0 @@
-platform: command_line
-switches:
-  test:
-    command_on: echo on
-    command_off: echo off
-    friendly_name: my test switch
-
