@@ -1,9 +1,17 @@
 Switches:
   view: no
   entities:
+    - switch.sleep_mode
+    - light.chandelier_level_10_0
+    - switch.basement_batteries
     - switch.bedroom_light
-    - switch.living_room_light
-    - switch.alfred_outlet
-    - switch.office_light
+    - switch.cleaning_chargers
+    - switch.coffee
+    - switch.entertainment_center
+    - switch.home_server
     - switch.house_fan
-    - switch.test
+    - switch.living_room_light
+    - switch.monitors
+    - switch.office_light
+    - switch.printers
+    - switch.treadmill

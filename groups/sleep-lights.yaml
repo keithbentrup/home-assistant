@@ -1,0 +1,4 @@
+Sleep lights:
+  view: no
+  entities:
+    - light.chandelier_level_10_0

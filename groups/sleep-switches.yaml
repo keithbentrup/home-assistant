@@ -1,0 +1,16 @@
+Sleep switches:
+  view: no
+  entities:
+    - switch.entertainment_center
+    - switch.treadmill
+    - switch.printers
+    - switch.office_outlet
+    - switch.office_light
+    - switch.basement_lights
+    - switch.basement_batteries
+    - switch.bedroom_light
+    - switch.monitors
+    - switch.house_fan
+    - switch.coffee
+    - switch.cleaning_chargers
+    - switch.living_room_light
