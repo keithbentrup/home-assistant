@@ -141,7 +141,7 @@ twilio:
 notify: !include_dir_list notifiers/
 automation: !include_dir_list automation/
 switch: !include_dir_list switches/
-#group: !include_dir_merge_named groups/
+group: !include_dir_merge_named groups/
 
 zwave: !include zwave.yaml
 
