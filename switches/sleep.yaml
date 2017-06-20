@@ -1,0 +1,12 @@
+platform: template
+switches:
+  sleep_mode:
+    value_template: false
+    turn_off:
+      service: switch.turn_on
+      entity_id: switch.does_not_exist
+    turn_on:
+      - service: switch.turn_off
+        entity_id: group.sleep_switches
+      - service: light.turn_off
+        entity_id: group.sleep_lights
