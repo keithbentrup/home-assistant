@@ -2,7 +2,7 @@ platform: rpi_rf
 gpio: 17
 switches:
   # switch_0317_1:
-  alfred_outlet:
+  basement_batteries:
     code_on: 1381683
     code_off: 1381692
     protocol: 1
@@ -33,13 +33,13 @@ switches:
     pulselength: 182
 
   # switch_0328_1:
-  swithch1:
+  treadmill:
     code_on: 5248307
     code_off: 5248316
     protocol: 1
     pulselength: 180
   # switch_0328_2:
-  office_outlet:
+  monitors:
     code_on: 5248451
     code_off: 5248460
     protocol: 1
@@ -57,36 +57,40 @@ switches:
    protocol: 1
    pulselength: 180
   # switch_0328_5:
-  switch5:
-    code_on: 5256451
-    code_off: 5256460
+  #basement_lights:
+  #  code_on: 5256451
+  #  code_off: 5256460
+  #  protocol: 1
+  #  pulselength: 180
+
+  # switch_0324_1:
+  cleaning_chargers:
+    code_on: 5510451
+    code_off: 5510460
     protocol: 1
     pulselength: 180
-
-
-#  toggle_1:
-#    code_on: 4150275
-#    code_off: 4150275
-#    pulselength: 164
-#    protocol: 1
-#  toggle_2:
-#    code_on: 4150284
-#    code_off: 4150284
-#    pulselength: 164
-#    protocol: 1
-#  toggle_3:
-#    code_on: 4150320
-#    code_off: 4150320
-#    pulselength: 164
-#    protocol: 1
-#  toggle_4:
-#    code_on: 4150464
-#    code_off: 4150464
-#    pulselength: 164
-#    protocol: 1
-#  toggle_5:
-#    code_on: 4151040
-#    code_off: 4151040
-#    pulselength: 164
-#    protocol: 1
+  # switch_0324_2:
+  coffee:
+    code_on: 5510595
+    code_off: 5510604
+    protocol: 1
+    pulselength: 180
+  # switch_0324_3:
+  #switch3:
+  #  code_on: 5510915
+  #  code_off: 5510924
+  #  protocol: 1
+  #  pulselength: 180
+  # switch_0324_4
+  home_server:
+   code_on: 5512451
+   code_off: 5512460
+   protocol: 1
+   pulselength: 180
+  # switch_0324_5:
+  bedroom_fan:
+    code_on: 5518595
+    code_off: 5518604
+    protocol: 1
+    pulselength: 180
 

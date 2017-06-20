@@ -1,8 +1,0 @@
-alias: Test switch automation
-trigger:
-  platform: state
-  entity_id: switch.test
-action:
-  service: notify.html5_push
-  data_template:
-    message: "switch was pressed {{ states('switch.test') }}"
