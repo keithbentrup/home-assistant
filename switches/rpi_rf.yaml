@@ -69,12 +69,12 @@ switches:
     code_off: 5510460
     protocol: 1
     pulselength: 180
-  # switch_0324_2:
-  coffee:
-    code_on: 5510595
-    code_off: 5510604
-    protocol: 1
-    pulselength: 180
+  # switch_0324_2: DEAD
+  #coffee:
+  #  code_on: 5510595
+  #  code_off: 5510604
+  #  protocol: 1
+  #  pulselength: 180
   # switch_0324_3:
   #switch3:
   #  code_on: 5510915
