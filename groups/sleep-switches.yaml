@@ -1,7 +1,7 @@
 Sleep switches:
   view: no
   entities:
-    - switch.entertainment_center
+    - switch.receiver
     - switch.treadmill
     - switch.printers
     - switch.office_outlet
