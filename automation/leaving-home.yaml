@@ -1,0 +1,11 @@
+alias: Leaving home
+trigger:
+  platform: state
+  entity_id: group.cells
+  from: 'home'
+  to: 'not_home'
+  for:
+    seconds: 5
+action:
+  service: switch.turn_off
+  entity_id: switch.sleep_mode
