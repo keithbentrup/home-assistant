@@ -5,9 +5,10 @@ Switches:
     - light.chandelier_level_10_0
     - switch.basement_batteries
     - switch.bedroom_light
+    - switch.bedroom_fan
     - switch.cleaning_chargers
     - switch.coffee
-    - switch.entertainment_center
+    - switch.receiver
     - switch.home_server
     - switch.house_fan
     - switch.living_room_light
