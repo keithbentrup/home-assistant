@@ -60,12 +60,12 @@ sun:
 tts:
   platform: google
 
-mqtt:
-  broker: 127.0.0.1
-  port: 1883
-  client_id: home-assistant-1
-  username: pi
-  password: raspberry
+#mqtt:
+#  broker: 127.0.0.1
+#  port: 1883
+#  client_id: home-assistant-1
+#  username: pi
+#  password: raspberry
 
 emulated_hue:
   type: alexa
@@ -141,7 +141,7 @@ twilio:
 notify: !include_dir_list notifiers/
 automation: !include_dir_list automation/
 switch: !include_dir_list switches/
-group: !include_dir_merge_named groups/
+#group: !include_dir_merge_named groups/
 
 zwave: !include zwave.yaml
 
