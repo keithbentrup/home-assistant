@@ -45,7 +45,7 @@ switches:
     protocol: 1
     pulselength: 180
   # switch_0328_3:
-  entertainment_center:
+  receiver:
     code_on: 5248771
     code_off: 5248780
     protocol: 1
@@ -57,11 +57,11 @@ switches:
    protocol: 1
    pulselength: 180
   # switch_0328_5:
-  #basement_lights:
-  #  code_on: 5256451
-  #  code_off: 5256460
-  #  protocol: 1
-  #  pulselength: 180
+  bedroom_fan:
+    code_on: 5256451
+    code_off: 5256460
+    protocol: 1
+    pulselength: 180
 
   # switch_0324_1:
   cleaning_chargers:
@@ -88,7 +88,7 @@ switches:
    protocol: 1
    pulselength: 180
   # switch_0324_5:
-  bedroom_fan:
+  basement_lights:
     code_on: 5518595
     code_off: 5518604
     protocol: 1
