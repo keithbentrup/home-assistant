@@ -1,10 +1,10 @@
-sensor.aeotec_dsb09104_home_energy_meter_power_11_8:
+sensor.aeotec_dsb09104_home_energy_meter_power_4:
   friendly_name: Total Power
-sensor.aeotec_dsb09104_home_energy_meter_power_11_8_2:
+sensor.aeotec_dsb09104_home_energy_meter_power_5:
   friendly_name: Power C2
-sensor.aeotec_dsb09104_home_energy_meter_power_11_8_3:
+sensor.aeotec_dsb09104_home_energy_meter_power_6:
   friendly_name: Power C1
-sensor.aeotec_dsb09104_home_energy_meter_energy_11_0:
+sensor.aeotec_dsb09104_home_energy_meter_energy:
   friendly_name: KWH
-lock.front_door_locked_9_0:
+lock.front_door_locked:
   friendly_name: Front Door Lock

@@ -57,11 +57,11 @@ switches:
    protocol: 1
    pulselength: 180
   # switch_0328_5:
-  bedroom_fan:
-    code_on: 5256451
-    code_off: 5256460
-    protocol: 1
-    pulselength: 180
+  #bedroom_fan:
+  #  code_on: 5256451
+  #  code_off: 5256460
+  #  protocol: 1
+  #  pulselength: 180
 
   # switch_0324_1:
   cleaning_chargers:

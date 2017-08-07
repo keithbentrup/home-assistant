@@ -563,7 +563,7 @@
       </CommandClass>
     </CommandClasses>
   </Node>
-  <Node id="14" name="" location="" basic="4" generic="7" specific="1" roletype="6" devicetype="3079" nodetype="0" type="Notification Sensor" listening="false" frequentListening="false" beaming="true" routing="true" max_baud_rate="40000" version="4" secured="true" query_stage="Complete">
+  <Node id="14" name="" location="" basic="4" generic="7" specific="1" roletype="6" devicetype="3079" nodetype="0" type="Notification Sensor" listening="true" frequentListening="false" beaming="true" routing="true" max_baud_rate="40000" version="4" secured="true" query_stage="Complete">
     <Manufacturer id="109" name="Vision">
       <Product type="2002" id="205" name="ZP3102 PIR Motion Sensor" />
     </Manufacturer>
@@ -578,7 +578,8 @@
       </CommandClass>
       <CommandClass id="49" name="COMMAND_CLASS_SENSOR_MULTILEVEL" version="5" issecured="true" innif="true">
         <Instance index="1" />
-        <Value type="decimal" genre="user" instance="1" index="1" label="Temperature" units="" read_only="true" write_only="false" verify_changes="false" poll_intensity="0" min="0" max="0" value="0.0" />
+        <!-- <Value type="decimal" genre="user" instance="1" index="1" label="Temperature" units="" read_only="true" write_only="false" verify_changes="false" poll_intensity="1" min="0" max="0" value="0.0" />-->
+        <Value type="decimal" genre="user" instance="1" index="1" label="Temperature" units="" read_only="true" write_only="false" verify_changes="false" poll_intensity="1" />
       </CommandClass>
       <CommandClass id="90" name="COMMAND_CLASS_DEVICE_RESET_LOCALLY" version="1" request_flags="4" issecured="true" innif="true">
         <Instance index="1" />

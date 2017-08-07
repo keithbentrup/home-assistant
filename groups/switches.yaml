@@ -2,10 +2,9 @@ Switches:
   view: no
   entities:
     - switch.sleep_mode
-    - light.chandelier_level_10_0
+    - light.chandelier_level
     - switch.basement_batteries
     - switch.bedroom_light
-    - switch.bedroom_fan
     - switch.cleaning_chargers
     - switch.coffee
     - switch.receiver

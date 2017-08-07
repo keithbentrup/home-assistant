@@ -1,11 +1,14 @@
 usb_path: /dev/ttyACM0
 config_path: /home/homeassistant/.homeassistant/deps/python_openzwave/ozw_config/
 polling_interval: 30000
+new_entity_ids: true
 device_config:
-  sensor.aeotec_dsb09104_home_energy_meter_energy_11_0:
+  sensor.aeotec_dsb09104_home_energy_meter_energy:
     polling_intensity: 1
-  sensor.aeotec_dsb09104_home_energy_meter_power_11_8_2:
+  sensor.aeotec_dsb09104_home_energy_meter_power_5:
     polling_intensity: 1
-  sensor.aeotec_dsb09104_home_energy_meter_power_11_8_3:
+  sensor.aeotec_dsb09104_home_energy_meter_power_6:
+    polling_intensity: 1
+  sensor.vision_zp3102_pir_motion_sensor_temperature:
     polling_intensity: 1
 

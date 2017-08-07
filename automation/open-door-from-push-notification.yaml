@@ -6,5 +6,5 @@ trigger:
     action: open_door
 action:
   - service: lock.unlock
-    entity_id: lock.front_door_locked_9_0
+    entity_id: lock.front_door_locked
 

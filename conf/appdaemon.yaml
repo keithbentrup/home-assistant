@@ -1,0 +1,15 @@
+AppDaemon:
+  logfile: STDOUT
+  errorfile: STDERR
+  threads: 10
+  #cert_path: <path/to/root/CA/cert>
+  cert_verify: true
+HASS:
+  #ha_url: https://127.0.0.1:8124
+  ha_url: https://ha.keithbentrup.com:8124
+  ha_key: ^bentrup256ha$
+
+# Apps
+alarm:
+  module: alarm
+  class: Alarm

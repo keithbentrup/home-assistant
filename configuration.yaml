@@ -81,13 +81,6 @@ device_tracker:
     password: !secret device_tracker_ddwrt_password
     consider_home: 60
     interval_seconds: 12
-#  - platform: ddwrt
-#    host: 192.168.4.2
-#    username: root
-#    password: !secret device_tracker_ddwrt_password
-#    consider_home: 60
-#    interval_seconds: 12
-
 
 #sensor:
 #  - platform: wunderground
@@ -141,7 +134,7 @@ twilio:
 notify: !include_dir_list notifiers/
 automation: !include_dir_list automation/
 switch: !include_dir_list switches/
-#group: !include_dir_merge_named groups/
+group: !include_dir_merge_named groups/
 
 zwave: !include zwave.yaml
 
@@ -164,4 +157,6 @@ zwave: !include zwave.yaml
 nest:
   client_id: !secret nest_client_id
   client_secret: !secret nest_client_secret
+
+logger:
 
